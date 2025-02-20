@@ -1,9 +1,9 @@
 .mh_toogle {
-    display: inline;
+    display: none;
     + .mh_toggle_btn {
         box-sizing: border-box;
         outline: 0;
-        display: block;
+        display: inline-block;
         width: 3em;
         flex-direction: row;
         height: 1.5em;
@@ -24,7 +24,7 @@
             width: 50%;
             height: 100%;
             border-radius: 50%;
-            transition: all 0.4s ease;
+            transition: all 0.16s ease;
             color: gray;
             background: white;
         }
