@@ -1,11 +1,10 @@
-const defaultTheme = [...document.styleSheets].find(style => /(style.css)$/.test(style.href));
-const darkTheme = [...document.styleSheets].find(style => /(style_dark.css)$/.test(style.href));
+const theme = [...document.styleSheets].find(style => /(style.css)$/.test(style.href));
 
 let setDarkMode = (isDark) => {
-    darkTheme.disabled = (isDark !== true);
-    defaultTheme.disabled = (isDark === true);
-    localStorage.setItem('darkmode', isDark ? 'dark' : 'default');
-    console.log("setDarkMode")
+    console.log("setDarkMode: ", isDark ? "true" : "false");
+    document.documentElement.setAttribute('color-theme', isDark ? "dark" : "light");
+    //localStorage.setItem('darkmode', isDark ? 'dark' : 'light');
+    localStorage.clear();
 }
 
 let currentTheme = localStorage.getItem('darkmode');
@@ -25,7 +24,6 @@ if (toggleThemeBtn) {
 
 let changeTheme = (e) => {
     setDarkMode(e.target.checked);
-    console.log("ASDFASDF")
 }
 
 toggleThemeBtn.addEventListener('click', changeTheme)
