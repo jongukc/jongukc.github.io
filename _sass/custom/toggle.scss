@@ -32,7 +32,7 @@
         background: lightgray;
         &:after {
             left: 0;
-            content: "l";
+            content: "\f1f0";
         }
     }
 
@@ -40,7 +40,7 @@
         background: gray;
         &:after {
             left: 50%;
-            content: "d";
+            content: "\f1ef";
         }
     }
 }
