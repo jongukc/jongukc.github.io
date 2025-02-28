@@ -41,8 +41,8 @@ toggle_dark_mode: true
 # If you want to link only specific pages in your header, use this and add the path to the pages
 # in order as they should show up.
 header_pages:
-  - _headers/about.md
-  - _headers/publications.md
+  #- _headers/about.md
+  #- _headers/publications.md
 
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
