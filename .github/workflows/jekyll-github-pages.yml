@@ -40,6 +40,7 @@ jobs:
           ruby-version: '2.7' # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
+        run: bundle lock --add-platform x86_64-linux
       - name: Build with Jekyll
         run: |
           cd docs
