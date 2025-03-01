@@ -3,8 +3,8 @@ const theme = [...document.styleSheets].find(style => /(style.css)$/.test(style.
 let setDarkMode = (isDark) => {
     console.log("setDarkMode: ", isDark ? "true" : "false");
     document.documentElement.setAttribute('color-theme', isDark ? "dark" : "light");
-    //localStorage.setItem('darkmode', isDark ? 'dark' : 'light');
-    localStorage.clear();
+    localStorage.setItem('darkmode', isDark ? 'dark' : 'light');
+    //localStorage.clear();
 }
 
 let currentTheme = localStorage.getItem('darkmode');
