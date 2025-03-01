@@ -1,5 +1,5 @@
 # Undergraduate Student @ SNU
-- Dept. Electrical and Computer Engineering
+- Dept. of Electrical and Computer Engineering
 - Interested in system security
 
 # Contact
