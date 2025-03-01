@@ -44,7 +44,7 @@ jobs:
         run: |
           ls -a
           bundle install
-          bundle exec jekyll build --destination ../_site
+          bundle exec jekyll build --destination ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
