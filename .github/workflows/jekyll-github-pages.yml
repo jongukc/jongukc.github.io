@@ -44,7 +44,6 @@ jobs:
         run: |
           cd docs
           ls -a
-          bundle lock --add-platform x86_64-linux
           bundle install
           bundle exec jekyll build --destination ../_site
       - name: Upload artifact
