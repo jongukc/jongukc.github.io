@@ -15,11 +15,9 @@ layout: base
     </div>
     <div class="profile-text">
       <div class="post-content">
-        {%- capture profile -%}
-        {%- include profile.md -%}
-        {%- endcapture -%}
-
-        {{ profile | markdownify }}
+{% capture profile %}
+{% include profile.md %}
+{% endcapture %}{{ profile | markdownify }}
       </div>
     </div>
   </div>
