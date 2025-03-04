@@ -1,12 +1,12 @@
-@keyframes colorCycle {
-  0% {
-    background-color: $background-color;
+@keyframes cursor_blink {
+  0%, 45% {
+    opacity: 0;
   }
-  75% {
-    background-color: $site-title-color;
+  50%, 95% {
+    opacity: 1;
   }
   100% {
-    background-color: $background-color;
+    opacity:0;
   }
 }
 
@@ -16,5 +16,6 @@
   margin-bottom: 0.05em;
   position: relative;
   align-self: center;
-  animation: colorCycle 1.2s infinite;
+  background-color:  $text-color;
+  animation: cursor_blink 1.2s infinite;
 }
