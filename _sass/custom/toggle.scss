@@ -1,47 +1,50 @@
+$dark-toggle-button-width: 3.0em;
+$dark-toggle-button-height: 1.7em;
+$dark-toggle-button-radius: $dark-toggle-button-height;
+
 .mh_toogle {
     display: none;
+    border-width: 2px;
     + .mh_toggle_btn {
         box-sizing: border-box;
         outline: 0;
         display: inline-block;
-        width: 3em;
+        width: $dark-toggle-button-width;
+        height: $dark-toggle-button-height;
+        border-radius: $dark-toggle-button-radius;
         flex-direction: row;
-        height: 1.5em;
+        justify-content: center;
+        align-content: center;
         position: relative;
         cursor: pointer;
         user-select: none;
-        border-radius: 1.5em;
         padding: 2px;
         margin-right: 10px;
-        transition: all 0.16 ease;
+        transition: all 0.16s ease;
         font-size: 1em;
+        background: lightgray;
 
         &:after {
             position: relative;
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
-            width: 50%;
             height: 100%;
+            aspect-ratio: 1;
             border-radius: 50%;
-            transition: all 0.16s ease;
-            color: gray;
-            background: white;
-        }
-
-        background: lightgray;
-        &:after {
-            left: 0;
-            content: "\f1f0";
+            transition: all 0.15s ease-in-out;
+            color: $text-color;
+            background: $background-color;
+            left: $dark-toggle-button-width - $dark-toggle-button-radius;
+            content: "light_mode";
         }
     }
 
     &:checked + .mh_toggle_btn {
         background: gray;
         &:after {
-            left: 50%;
-            content: "\f1ef";
+            left: 0;
+            content: "dark_mode";
         }
     }
 }
