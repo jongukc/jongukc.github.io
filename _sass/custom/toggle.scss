@@ -1,5 +1,5 @@
-$dark-toggle-button-width: 3.0em;
-$dark-toggle-button-height: 1.7em;
+$dark-toggle-button-width: 3.2em;
+$dark-toggle-button-height: 1.6em;
 $dark-toggle-button-radius: $dark-toggle-button-height;
 
 .mh_toogle {
@@ -35,7 +35,7 @@ $dark-toggle-button-radius: $dark-toggle-button-height;
             transition: all 0.15s ease-in-out;
             color: $text-color;
             background: $background-color;
-            left: $dark-toggle-button-width - $dark-toggle-button-radius;
+            left: 50%;
             content: "light_mode";
         }
     }
