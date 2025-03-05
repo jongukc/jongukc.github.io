@@ -35,7 +35,7 @@ $dark-toggle-button-radius: $dark-toggle-button-height;
             transition: all 0.15s ease-in-out;
             color: $text-color;
             background: $background-color;
-            left: 50%;
+            left: $dark-toggle-button-width - $dark-toggle-button-radius;
             content: "light_mode";
         }
     }
