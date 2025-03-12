@@ -3,7 +3,7 @@
 - Interested in system security
 
 # Contact
-- [jdal3031@snu.ac.kr](mailto:jdal3031@snu.ac.kr)
+- [{{ site.author.email }}](mailto:{{ site.author.email }})
 - [PGP Key](./jjw.pgp)
 - [GitHub](
   {%- for entry in site.minima.social_links %}
