@@ -17,8 +17,8 @@ title: Jonguk Cheong
 #description: >- # this means to ignore newlines until "baseurl:"
 #  Undergraduate student 
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://iluvchkn.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: iluvchkn
+url: "https://jongukc.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+github_username: jongukc
 author:
   name: Jonguk Cheong
   email: jdal3031@snu.ac.kr 
@@ -71,7 +71,7 @@ minima:
   #  - { platform: dribbble,       user_url: "https://dribbble.com/jekyll" }
   #  - { platform: facebook,       user_url: "https://www.facebook.com/jekyll" }
   #  - { platform: flickr,         user_url: "https://www.flickr.com/photos/jekyll" }
-    - { platform: github,         user_url: "https://github.com/iluvchkn" }
+    - { platform: github,         user_url: "https://github.com/jongukc" }
   #  - { platform: gitlab,         user_url: "https://gitlab.com/jekyll" }
   #  - { platform: google_scholar, user_url: "https://scholar.google.com/citations?user=qc6CJjYAAAAJ" }
   #  - { platform: instagram,      user_url: "https://www.instagram.com/jekyll" }
