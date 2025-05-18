@@ -4,7 +4,7 @@
 
 # Contact
 - [{{ site.author.email }}](mailto:{{ site.author.email }})
-- [PGP Key](./jjw.pgp)
+- [PGP Key](./jonguk.pgp)
 - [GitHub](
   {%- for entry in site.minima.social_links %}
     {%- if entry.platform == "github" %}
