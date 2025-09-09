@@ -1,0 +1,10 @@
+services:
+    env:
+        build: .
+        user: ubuntu
+        volumes:
+            - .:/home/ubuntu/workspace
+        ports:
+            - "127.0.0.1:11880:11880"
+        stdin_open: true
+        tty: true
