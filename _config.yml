@@ -47,11 +47,16 @@ links:
 # If you want to link only specific pages in your header, use this and add the path to the pages
 # in order as they should show up.
 header_pages:
-  #- _headers/about.md
-  #- _headers/publications.md
+  #- _headers/pubs.html
+  - _headers/posts.html
 
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
+
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:title/
 
 # Minima specific settings, which are only available from Minima 3.0 onward.
 minima:
