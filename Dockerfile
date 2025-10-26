@@ -2,7 +2,7 @@ FROM ruby:2.7-alpine3.16
 
 RUN apk update
 RUN set -ex
-RUN apk add --no-cache sudo build-base gcc cmake git
+RUN apk add --no-cache sudo build-base gcc cmake git python3
 
 RUN gem install bundler -v 2.4.22
 
@@ -26,7 +26,7 @@ RUN addgroup \
     --ingroup "$GROUP" \
     $USER
 
-RUN echo "$USER ALL=(ALL) ALL" > /etc/sudoers.d/$USER && chmod 0440 /etc/sudoers.d/$USER
+RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER && chmod 0440 /etc/sudoers.d/$USER
 
 USER ${USER}:${GROUP}
 WORKDIR /home/${USER}/workspace

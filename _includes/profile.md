@@ -1,16 +1,12 @@
-# Undergraduate Student @ SNU
-- Dept. of Electrical and Computer Engineering
-- Interested in system security
+# Graduate Student @ [CompSec]({{ site.links.lab }})
+
+- Department of Electrical and Computer Engineering
+- Seoul National University (SNU)
 
 # Contact
+
 - [{{ site.author.email }}](mailto:{{ site.author.email }})
 - [PGP Key](./jonguk.pgp)
-- [GitHub](
-  {%- for entry in site.minima.social_links %}
-    {%- if entry.platform == "github" %}
-        {{entry.user_url}}
-    {% endif -%}
-  {% endfor -%}
-)
+- [GitHub]({{ site.links.github }})
 
 [comment]: # (- [CV](./CV.pdf))
