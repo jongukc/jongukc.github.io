@@ -1,4 +1,4 @@
-$dark-toggle-button-width: 3.2em;
+$dark-toggle-button-width: 1.6em;
 $dark-toggle-button-height: 1.6em;
 $dark-toggle-button-radius: $dark-toggle-button-height;
 
@@ -32,17 +32,15 @@ $dark-toggle-button-radius: $dark-toggle-button-height;
             height: 100%;
             aspect-ratio: 1;
             border-radius: 50%;
-            transition: all 0.15s ease-in-out;
             color: $brand-color-dark;
             background: $background-color;
-            left: $dark-toggle-button-width - $dark-toggle-button-radius;
             content: "light_mode";
         }
     }
 
     &:checked + .toggle_btn {
         &:after {
-            left: 0;
+            //left: 0;
             color: $brand-color-light;
             content: "dark_mode";
         }
