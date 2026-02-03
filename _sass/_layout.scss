@@ -1,13 +1,8 @@
-/**
- * Site header
- */
 .site-header {
   border-top: 5px solid $border-color-03;
   border-bottom: 1px solid $border-color-01;
   min-height: $spacing-unit * 1.865;
   line-height: $base-line-height * $base-font-size * 2.25;
-
-  // Positioning context for the mobile navigation icon
   position: relative;
 }
 
@@ -20,6 +15,7 @@
     padding-right: 45px;
   }
 }
+
 .site-title {
   @include relative-font-size(1.500);
   font-weight: bold;
@@ -30,7 +26,7 @@
     color: $site-title-color;
   }
   &:hover {
-    text-underline-offset: 8px; 
+    text-underline-offset: 8px;
     text-decoration-thickness: 3px;
     text-decoration-color: $brand-color;
   }
@@ -89,7 +85,6 @@
     padding: 5px 10px;
     margin-left: 20px;
 
-    // Gaps between nav items, but not on the last one
     &:not(:last-child) {
       margin-right: 0;
     }
@@ -130,11 +125,6 @@
   }
 }
 
-
-
-/**
- * Site footer
- */
 .site-footer {
   border-top: 1px solid $border-color-01;
   padding: $spacing-unit 0;
@@ -209,9 +199,6 @@
   }
 }
 
-/**
- * Page content
- */
 .page-content {
   padding: $spacing-unit 0;
   flex: 1 0 auto;
@@ -244,7 +231,6 @@
   @include relative-font-size(1.5);
 }
 
-
 .social-media-list {
   display: table;
   margin: 0 auto;
@@ -261,11 +247,6 @@
   }
 }
 
-
-
-/**
- * Pagination navbar
- */
 .pagination {
   margin-bottom: $spacing-unit;
   @extend .social-media-list;
@@ -288,11 +269,6 @@
   }
 }
 
-
-
-/**
- * Grid helpers
- */
 @media screen and (min-width: $on-large) {
   .one-half {
     width: calc(50% - (#{$spacing-unit} / 2));
@@ -309,7 +285,7 @@
 
 .profile-text {
   @include relative-font-size(1.125);
-  
+
   h1 {
     font-weight: bold;
     @include relative-font-size(1.25);
@@ -327,9 +303,6 @@
   }
 }
 
-/**
- * Posts
- */
 .post-header {
   margin-bottom: $spacing-unit;
 }
@@ -338,7 +311,7 @@
   margin-bottom: $spacing-unit;
 
   @include relative-font-size(1.125);
-  
+
   h1 {
     font-weight: bold;
     margin-top: $spacing-unit;

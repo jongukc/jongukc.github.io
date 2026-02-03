@@ -1,29 +1,24 @@
-const theme = [...document.styleSheets].find(style => /(style.css)$/.test(style.href));
+const toggle = document.getElementById("toggle_dark_mode");
 
-let setDarkMode = (isDark) => {
-    console.log("setDarkMode: ", isDark ? "true" : "false");
-    document.documentElement.setAttribute('color-theme', isDark ? "dark" : "light");
-    localStorage.setItem('darkmode', isDark ? 'dark' : 'light');
-    //localStorage.clear();
+const getIsDark = () => {
+    const stored = localStorage.getItem('darkmode');
+    if (stored) return stored === 'dark';
+    return matchMedia('(prefers-color-scheme: dark)').matches;
+};
+
+const setTheme = (isDark) => {
+    const theme = isDark ? 'dark' : 'light';
+    document.documentElement.setAttribute('color-theme', theme);
+    localStorage.setItem('darkmode', theme);
+};
+
+if (toggle) {
+    toggle.checked = getIsDark();
+    toggle.addEventListener('change', (e) => setTheme(e.target.checked));
 }
 
-let currentTheme = localStorage.getItem('darkmode');
-let isDarkMode = false;
-if (currentTheme) {
-    isDarkMode = currentTheme === 'dark';
-} else {
-    isDarkMode = matchMedia('(prefers-color-scheme: dark)').matches;
-}
-
-setDarkMode(isDarkMode);
-
-let toggleThemeBtn = document.getElementById("toggle_dark_mode")
-if (toggleThemeBtn) {
-    toggleThemeBtn.checked = isDarkMode
-}
-
-let changeTheme = (e) => {
-    setDarkMode(e.target.checked);
-}
-
-toggleThemeBtn.addEventListener('click', changeTheme)
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('darkmode')) {
+        if (toggle) toggle.checked = e.matches;
+    }
+});

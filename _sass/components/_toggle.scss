@@ -40,7 +40,6 @@ $dark-toggle-button-radius: $dark-toggle-button-height;
 
     &:checked + .toggle_btn {
         &:after {
-            //left: 0;
             color: $brand-color-light;
             content: "dark_mode";
         }
