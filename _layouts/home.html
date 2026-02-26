@@ -3,10 +3,6 @@ layout: base
 ---
 
 <div class="home">
-  <!--{%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-  -->
 
   <!-- Profile -->
   <div class="profile-wrapper">
@@ -14,15 +10,21 @@ layout: base
       <img src="{{ "/assets/profile.webp" | relative_url }}">
     </div>
     <div class="profile-text">
-      <div class="post-content">
 {% capture profile %}
-{% include profile.md %}
+{% include content/profile.md %}
 {% endcapture %}{{ profile | markdownify }}
-      </div>
     </div>
   </div>
 
+  <!-- bio -->
   <div class="post-content">
-    {{ content }}
+{% capture bio %}
+{% include content/bio.md %}
+{% endcapture %}{{ bio | markdownify }}
+  </div>
+
+  <!-- Publications -->
+  <div class="post-content">
+{%include pub.html %}
   </div>
 </div>
