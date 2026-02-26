@@ -1,0 +1,11 @@
+services:
+  ruby-env:
+    build: .
+    user: blog
+    volumes:
+      - .:/home/blog/workspace
+    stdin_open: true
+    tty: true
+    ports:
+      - "4000:4000"
+    network_mode: "host"

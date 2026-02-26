@@ -1,0 +1,21 @@
+@keyframes cursor_blink {
+  0%, 45% {
+    opacity: 0;
+  }
+  50%, 95% {
+    opacity: 1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+.cursor {
+  width: 0.95em;
+  height: 1.9em;
+  margin-bottom: 0.05em;
+  position: relative;
+  align-self: center;
+  background-color:  $text-color;
+  animation: cursor_blink 1.2s infinite;
+}

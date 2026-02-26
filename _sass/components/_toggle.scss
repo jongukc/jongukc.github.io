@@ -1,0 +1,47 @@
+$dark-toggle-button-width: 1.6em;
+$dark-toggle-button-height: 1.6em;
+$dark-toggle-button-radius: $dark-toggle-button-height;
+
+.toggle {
+    display: none;
+    border-width: 2px;
+    + .toggle_btn {
+        box-sizing: border-box;
+        outline: 0;
+        display: inline-block;
+        width: $dark-toggle-button-width;
+        height: $dark-toggle-button-height;
+        border-radius: $dark-toggle-button-radius;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        padding: 2px;
+        margin-right: 10px;
+        transition: all 0.16s ease;
+        font-size: 1em;
+        background: $brand-color;
+
+        &:after {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            color: $brand-color-dark;
+            background: $background-color;
+            content: "light_mode";
+        }
+    }
+
+    &:checked + .toggle_btn {
+        &:after {
+            color: $brand-color-light;
+            content: "dark_mode";
+        }
+    }
+}
