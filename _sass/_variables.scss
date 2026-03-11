@@ -1,122 +1,124 @@
 @charset "utf-8";
 
-// Light mode colors
-$lm-brand-color: #665c54 !default;
-$lm-brand-color-light: lighten($lm-brand-color, 40%) !default;
-$lm-brand-color-dark: darken($lm-brand-color, 20%) !default;
+// Light mode colors (Atom One Light)
+$lm-brand-color: #a0a1a7 !default;
+$lm-brand-color-light: lighten($lm-brand-color, 20%) !default;
+$lm-brand-color-dark: darken($lm-brand-color, 25%) !default;
 
-$lm-site-title-color: #282828 !default;
+$lm-site-title-color: #383a42 !default;
 
-$lm-text-color: #282828 !default;
-$lm-background-color: #fbfbf5 !default;
-$lm-code-background-color: #ebdbb2 !default;
+$lm-text-color: #383a42 !default;
+$lm-background-color: #fafafa !default;
+$lm-code-background-color: #f0f0f0 !default;
 
-$lm-link-base-color: #076678 !default;
-$lm-link-visited-color: $lm-link-base-color !default;
+$lm-link-base-color: #4078f2 !default;
+$lm-link-visited-color: #a626a4 !default;
 $lm-link-hover-color: $lm-text-color !default;
 
-$lm-border-color-01: $lm-brand-color-light !default;
-$lm-border-color-02: lighten($lm-brand-color, 35%) !default;
+$lm-border-color-01: #e5e5e6 !default;
+$lm-border-color-02: #d4d4d5 !default;
 $lm-border-color-03: $lm-brand-color-dark !default;
 
 $lm-table-text-color: lighten($lm-text-color, 18%) !default;
-$lm-table-zebra-color: lighten($lm-brand-color, 46%) !default;
-$lm-table-header-bg-color: lighten($lm-brand-color, 43%) !default;
-$lm-table-header-border: lighten($lm-brand-color, 37%) !default;
+$lm-table-zebra-color: #f5f5f5 !default;
+$lm-table-header-bg-color: #eaeaeb !default;
+$lm-table-header-border: #d4d4d5 !default;
 $lm-table-border-color: $lm-border-color-01 !default;
 
 @mixin lm-highlight {
     .highlight {
-        .c, .cm, .c1 { color: #998; font-style: italic }
-        .err { color: #a61717; background-color: #e3d2d2 }
-        .k, .o, .kc, .kd, .kp, .kr, .ow { font-weight: bold }
-        .cp { color: #999; font-weight: bold }
-        .cs { color: #999; font-weight: bold; font-style: italic }
-        .gd { color: #000; background-color: #fdd }
-        .gd .x { color: #000; background-color: #faa }
+        .c, .cm, .c1 { color: #a0a1a7; font-style: italic }
+        .err { color: #e45649 }
+        .k, .kc, .kd, .kp, .kr { color: #a626a4; font-weight: bold }
+        .o, .ow { font-weight: bold }
+        .cp { color: #a0a1a7; font-weight: bold }
+        .cs { color: #a0a1a7; font-weight: bold; font-style: italic }
+        .gd { color: #e45649; background-color: #ffeef0 }
+        .gd .x { color: #e45649; background-color: #fdcecf }
         .ge { font-style: italic }
-        .gr, .gt { color: #a00 }
-        .gh { color: #999 }
-        .gi { color: #000; background-color: #dfd }
-        .gi .x { color: #000; background-color: #afa }
-        .go { color: #888 }
-        .gp { color: #555 }
+        .gr, .gt { color: #e45649 }
+        .gh { color: #a0a1a7 }
+        .gi { color: #50a14f; background-color: #e6ffed }
+        .gi .x { color: #50a14f; background-color: #b5efb3 }
+        .go { color: #a0a1a7 }
+        .gp { color: #383a42 }
         .gs { font-weight: bold }
-        .gu { color: #aaa }
-        .kt { color: #458; font-weight: bold }
-        .m, .mf, .mh, .mi, .mo, .il { color: #099 }
-        .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1 { color: #d14 }
-        .sr { color: #009926 }
-        .ss { color: #990073 }
-        .na, .no, .nv, .vc, .vg, .vi { color: #008080 }
-        .nb { color: #0086B3 }
-        .nc { color: #458; font-weight: bold }
-        .ni { color: #800080 }
-        .ne, .nf { color: #900; font-weight: bold }
-        .nn { color: #555 }
-        .nt { color: #000080 }
-        .w { color: #bbb }
-        .bp { color: #999 }
+        .gu { color: #0184bc }
+        .kt { color: #c18401; font-weight: bold }
+        .m, .mf, .mh, .mi, .mo, .il { color: #986801 }
+        .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1 { color: #50a14f }
+        .sr { color: #0184bc }
+        .ss { color: #986801 }
+        .na, .no, .nv, .vc, .vg, .vi { color: #e45649 }
+        .nb { color: #e45649 }
+        .nc { color: #c18401; font-weight: bold }
+        .ni { color: #a626a4 }
+        .ne, .nf { color: #4078f2; font-weight: bold }
+        .nn { color: #c18401 }
+        .nt { color: #e45649 }
+        .w { color: #d4d4d5 }
+        .bp { color: #a0a1a7 }
     }
 }
 
-// Dark mode colors
-$dm-brand-color: #a89984 !default;
-$dm-brand-color-light: lighten($dm-brand-color, 5%) !default;
-$dm-brand-color-dark: darken($dm-brand-color, 35%) !default;
+// Dark mode colors (Atom One Dark)
+$dm-brand-color: #5c6370 !default;
+$dm-brand-color-light: lighten($dm-brand-color, 15%) !default;
+$dm-brand-color-dark: darken($dm-brand-color, 20%) !default;
 
-$dm-site-title-color: #fbf1c7!default;
+$dm-site-title-color: #abb2bf !default;
 
-$dm-text-color:  #fbf1c7 !default;
-$dm-background-color: #1d2021 !default;
-$dm-code-background-color: #3c3836 !default;
+$dm-text-color: #abb2bf !default;
+$dm-background-color: #282c34 !default;
+$dm-code-background-color: #2c313a !default;
 
-$dm-link-base-color: #8ec07c !default;
-$dm-link-visited-color: $dm-link-base-color !default;
+$dm-link-base-color: #61afef !default;
+$dm-link-visited-color: #c678dd !default;
 $dm-link-hover-color: $dm-text-color !default;
 
-$dm-border-color-01: $dm-brand-color-dark !default;
-$dm-border-color-02: $dm-brand-color-light !default;
+$dm-border-color-01: #3e4451 !default;
+$dm-border-color-02: #5c6370 !default;
 $dm-border-color-03: $dm-brand-color !default;
 
 $dm-table-text-color: $dm-text-color !default;
-$dm-table-zebra-color: lighten($dm-background-color, 4%) !default;
-$dm-table-header-bg-color: lighten($dm-background-color, 10%) !default;
-$dm-table-header-border: lighten($dm-background-color, 21%) !default;
+$dm-table-zebra-color: #2c313a !default;
+$dm-table-header-bg-color: #333842 !default;
+$dm-table-header-border: #3e4451 !default;
 $dm-table-border-color: $dm-border-color-01 !default;
 
 @mixin dm-highlight {
     .highlight {
-        .c, .cm, .c1 { color: #545454; font-style: italic }
-        .err { color: #f07178; background-color: #e3d2d2 }
-        .k { color: #89DDFF; font-weight: bold }
-        .o, .kc, .kd, .kp, .kr, .ow { font-weight: bold }
-        .cp { color: #545454; font-weight: bold }
-        .cs { color: #545454; font-weight: bold; font-style: italic }
-        .gd { color: #000; background-color: #fdd }
-        .gd .x { color: #000; background-color: #faa }
+        .c, .cm, .c1 { color: #5c6370; font-style: italic }
+        .err { color: #e06c75 }
+        .k, .kc, .kd, .kp, .kr { color: #c678dd; font-weight: bold }
+        .o, .ow { font-weight: bold }
+        .cp { color: #5c6370; font-weight: bold }
+        .cs { color: #5c6370; font-weight: bold; font-style: italic }
+        .gd { color: #e06c75; background-color: #3c2a2e }
+        .gd .x { color: #e06c75; background-color: #4c2a2e }
         .ge { font-style: italic }
-        .gr, .gt { color: #f07178 }
-        .gh { color: #999 }
-        .gi { color: #000; background-color: #dfd }
-        .gi .x { color: #000; background-color: #afa }
-        .go { color: #888 }
-        .gp { color: #555 }
+        .gr, .gt { color: #e06c75 }
+        .gh { color: #5c6370 }
+        .gi { color: #98c379; background-color: #2a3c2e }
+        .gi .x { color: #98c379; background-color: #2a4c2e }
+        .go { color: #5c6370 }
+        .gp { color: #abb2bf }
         .gs { font-weight: bold }
-        .gu { color: #aaa }
-        .kt { color: #FFCB6B; font-weight: bold }
-        .m, .mf, .mh, .mi, .mo, .il { color: #F78C6C }
-        .s, .sb, .sc, .sd, .s2, .sh, .si, .sx, .s1, .sr, .ss { color: #C3E88D }
-        .se, .nb, .nv, .vg, .vi, .w { color: #EEFFFF }
-        .na, .no { color: #008080 }
-        .nc { color: #FFCB6B; font-weight: bold }
-        .ni { color: #800080 }
-        .ne { color: #900; font-weight: bold }
-        .nf { color: #82AAFF; font-weight: bold }
-        .nn { color: #555 }
-        .nt { color: #FFCB6B }
-        .vc { color: #FFCB6B }
-        .bp { color: #999 }
+        .gu { color: #56b6c2 }
+        .kt { color: #e5c07b; font-weight: bold }
+        .m, .mf, .mh, .mi, .mo, .il { color: #d19a66 }
+        .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1 { color: #98c379 }
+        .sr { color: #56b6c2 }
+        .ss { color: #d19a66 }
+        .na, .no, .nv, .vc, .vg, .vi { color: #e06c75 }
+        .nb { color: #e06c75 }
+        .nc { color: #e5c07b; font-weight: bold }
+        .ni { color: #c678dd }
+        .ne, .nf { color: #61afef; font-weight: bold }
+        .nn { color: #e5c07b }
+        .nt { color: #e06c75 }
+        .w { color: #3e4451 }
+        .bp { color: #5c6370 }
     }
 }
 
