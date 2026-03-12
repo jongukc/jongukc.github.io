@@ -165,26 +165,6 @@ $dm-table-border-color: $dm-border-color-01 !default;
     --table-border-color: #{$dm-table-border-color};
 }
 
-// Static variables for Sass compilation
-$brand-color: $lm-brand-color;
-$brand-color-light: $lm-brand-color-light;
-$brand-color-dark: $lm-brand-color-dark;
-$site-title-color: $lm-site-title-color;
-$text-color: $lm-text-color;
-$background-color: $lm-background-color;
-$code-background-color: $lm-code-background-color;
-$link-base-color: $lm-link-base-color;
-$link-visited-color: $lm-link-visited-color;
-$link-hover-color: $lm-link-hover-color;
-$border-color-01: $lm-border-color-01;
-$border-color-02: $lm-border-color-02;
-$border-color-03: $lm-border-color-03;
-$table-text-color: $lm-table-text-color;
-$table-zebra-color: $lm-table-zebra-color;
-$table-header-bg-color: $lm-table-header-bg-color;
-$table-header-border: $lm-table-header-border;
-$table-border-color: $lm-table-border-color;
-
 // Default: light mode (no preference or explicit light)
 :root {
     @include light-theme-vars;
@@ -195,8 +175,6 @@ $table-border-color: $lm-table-border-color;
 @media (prefers-color-scheme: dark) {
     :root:not([color-theme]) {
         @include dark-theme-vars;
-    }
-    :root:not([color-theme]) {
         @include dm-highlight;
     }
 }

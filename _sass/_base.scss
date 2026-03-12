@@ -14,10 +14,7 @@ body {
   color: $text-color;
   background-color: $background-color;
   -webkit-text-size-adjust: 100%;
-  -webkit-font-feature-settings: "kern" 1;
-     -moz-font-feature-settings: "kern" 1;
-       -o-font-feature-settings: "kern" 1;
-          font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
   font-kerning: normal;
   display: flex;
   min-height: 100vh;
@@ -211,7 +208,7 @@ table {
     }
   }
   th, td {
-    padding: ($spacing-unit * 33.3333333333 * .01) ($spacing-unit * .5);
+    padding: ($spacing-unit / 3) ($spacing-unit * .5);
   }
   th {
     background-color: $table-header-bg-color;
@@ -224,7 +221,5 @@ table {
   @include media-query($on-laptop) {
     display: block;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: -ms-autohiding-scrollbar;
   }
 }

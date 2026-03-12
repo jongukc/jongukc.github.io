@@ -1,6 +1,4 @@
-$dark-toggle-button-width: 1.6em;
-$dark-toggle-button-height: 1.6em;
-$dark-toggle-button-radius: $dark-toggle-button-height;
+$dark-toggle-button-size: 1.6em;
 
 .toggle {
     display: none;
@@ -9,9 +7,9 @@ $dark-toggle-button-radius: $dark-toggle-button-height;
         box-sizing: border-box;
         outline: 0;
         display: inline-block;
-        width: $dark-toggle-button-width;
-        height: $dark-toggle-button-height;
-        border-radius: $dark-toggle-button-radius;
+        width: $dark-toggle-button-size;
+        height: $dark-toggle-button-size;
+        border-radius: $dark-toggle-button-size;
         flex-direction: row;
         justify-content: center;
         align-content: center;
