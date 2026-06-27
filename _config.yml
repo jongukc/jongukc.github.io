@@ -38,6 +38,12 @@ include:
 
 toggle_dark_mode: true
 
+# Colorschemes
+#   atom-one     Atom One Light / Atom One Dark
+#   dalbit
+#   dalbit-mono
+colorscheme: dalbit-mono
+
 links:
   github: "https://github.com/jongukc"
   lab: "https://compsec.snu.ac.kr"
