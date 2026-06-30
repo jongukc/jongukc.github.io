@@ -1,124 +1,11 @@
 @charset "utf-8";
 
-// Light mode colors
-$lm-brand-color: #665c54 !default;
-$lm-brand-color-light: lighten($lm-brand-color, 40%) !default;
-$lm-brand-color-dark: darken($lm-brand-color, 20%) !default;
-
-$lm-site-title-color: #282828 !default;
-
-$lm-text-color: #282828 !default;
-$lm-background-color: #fbfbf5 !default;
-$lm-code-background-color: #ebdbb2 !default;
-
-$lm-link-base-color: #076678 !default;
-$lm-link-visited-color: $lm-link-base-color !default;
-$lm-link-hover-color: $lm-text-color !default;
-
-$lm-border-color-01: $lm-brand-color-light !default;
-$lm-border-color-02: lighten($lm-brand-color, 35%) !default;
-$lm-border-color-03: $lm-brand-color-dark !default;
-
-$lm-table-text-color: lighten($lm-text-color, 18%) !default;
-$lm-table-zebra-color: lighten($lm-brand-color, 46%) !default;
-$lm-table-header-bg-color: lighten($lm-brand-color, 43%) !default;
-$lm-table-header-border: lighten($lm-brand-color, 37%) !default;
-$lm-table-border-color: $lm-border-color-01 !default;
-
-@mixin lm-highlight {
-    .highlight {
-        .c, .cm, .c1 { color: #998; font-style: italic }
-        .err { color: #a61717; background-color: #e3d2d2 }
-        .k, .o, .kc, .kd, .kp, .kr, .ow { font-weight: bold }
-        .cp { color: #999; font-weight: bold }
-        .cs { color: #999; font-weight: bold; font-style: italic }
-        .gd { color: #000; background-color: #fdd }
-        .gd .x { color: #000; background-color: #faa }
-        .ge { font-style: italic }
-        .gr, .gt { color: #a00 }
-        .gh { color: #999 }
-        .gi { color: #000; background-color: #dfd }
-        .gi .x { color: #000; background-color: #afa }
-        .go { color: #888 }
-        .gp { color: #555 }
-        .gs { font-weight: bold }
-        .gu { color: #aaa }
-        .kt { color: #458; font-weight: bold }
-        .m, .mf, .mh, .mi, .mo, .il { color: #099 }
-        .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1 { color: #d14 }
-        .sr { color: #009926 }
-        .ss { color: #990073 }
-        .na, .no, .nv, .vc, .vg, .vi { color: #008080 }
-        .nb { color: #0086B3 }
-        .nc { color: #458; font-weight: bold }
-        .ni { color: #800080 }
-        .ne, .nf { color: #900; font-weight: bold }
-        .nn { color: #555 }
-        .nt { color: #000080 }
-        .w { color: #bbb }
-        .bp { color: #999 }
-    }
-}
-
-// Dark mode colors
-$dm-brand-color: #a89984 !default;
-$dm-brand-color-light: lighten($dm-brand-color, 5%) !default;
-$dm-brand-color-dark: darken($dm-brand-color, 35%) !default;
-
-$dm-site-title-color: #fbf1c7!default;
-
-$dm-text-color:  #fbf1c7 !default;
-$dm-background-color: #1d2021 !default;
-$dm-code-background-color: #3c3836 !default;
-
-$dm-link-base-color: #8ec07c !default;
-$dm-link-visited-color: $dm-link-base-color !default;
-$dm-link-hover-color: $dm-text-color !default;
-
-$dm-border-color-01: $dm-brand-color-dark !default;
-$dm-border-color-02: $dm-brand-color-light !default;
-$dm-border-color-03: $dm-brand-color !default;
-
-$dm-table-text-color: $dm-text-color !default;
-$dm-table-zebra-color: lighten($dm-background-color, 4%) !default;
-$dm-table-header-bg-color: lighten($dm-background-color, 10%) !default;
-$dm-table-header-border: lighten($dm-background-color, 21%) !default;
-$dm-table-border-color: $dm-border-color-01 !default;
-
-@mixin dm-highlight {
-    .highlight {
-        .c, .cm, .c1 { color: #545454; font-style: italic }
-        .err { color: #f07178; background-color: #e3d2d2 }
-        .k { color: #89DDFF; font-weight: bold }
-        .o, .kc, .kd, .kp, .kr, .ow { font-weight: bold }
-        .cp { color: #545454; font-weight: bold }
-        .cs { color: #545454; font-weight: bold; font-style: italic }
-        .gd { color: #000; background-color: #fdd }
-        .gd .x { color: #000; background-color: #faa }
-        .ge { font-style: italic }
-        .gr, .gt { color: #f07178 }
-        .gh { color: #999 }
-        .gi { color: #000; background-color: #dfd }
-        .gi .x { color: #000; background-color: #afa }
-        .go { color: #888 }
-        .gp { color: #555 }
-        .gs { font-weight: bold }
-        .gu { color: #aaa }
-        .kt { color: #FFCB6B; font-weight: bold }
-        .m, .mf, .mh, .mi, .mo, .il { color: #F78C6C }
-        .s, .sb, .sc, .sd, .s2, .sh, .si, .sx, .s1, .sr, .ss { color: #C3E88D }
-        .se, .nb, .nv, .vg, .vi, .w { color: #EEFFFF }
-        .na, .no { color: #008080 }
-        .nc { color: #FFCB6B; font-weight: bold }
-        .ni { color: #800080 }
-        .ne { color: #900; font-weight: bold }
-        .nf { color: #82AAFF; font-weight: bold }
-        .nn { color: #555 }
-        .nt { color: #FFCB6B }
-        .vc { color: #FFCB6B }
-        .bp { color: #999 }
-    }
-}
+// Scheme-agnostic CSS-variable wiring.
+// The active colorscheme (imported by assets/css/style.scss before this file
+// via `site.colorscheme` in _config.yml) is expected to define the
+// $lm-*/$dm-* SCSS variables and the lm-highlight/dm-highlight mixins that
+// are consumed below. To add a new scheme, drop a _<name>.scss into
+// _sass/colorschemes/ matching that contract.
 
 // Mixin to set CSS custom properties
 @mixin light-theme-vars {
@@ -163,26 +50,6 @@ $dm-table-border-color: $dm-border-color-01 !default;
     --table-border-color: #{$dm-table-border-color};
 }
 
-// Static variables for Sass compilation
-$brand-color: $lm-brand-color;
-$brand-color-light: $lm-brand-color-light;
-$brand-color-dark: $lm-brand-color-dark;
-$site-title-color: $lm-site-title-color;
-$text-color: $lm-text-color;
-$background-color: $lm-background-color;
-$code-background-color: $lm-code-background-color;
-$link-base-color: $lm-link-base-color;
-$link-visited-color: $lm-link-visited-color;
-$link-hover-color: $lm-link-hover-color;
-$border-color-01: $lm-border-color-01;
-$border-color-02: $lm-border-color-02;
-$border-color-03: $lm-border-color-03;
-$table-text-color: $lm-table-text-color;
-$table-zebra-color: $lm-table-zebra-color;
-$table-header-bg-color: $lm-table-header-bg-color;
-$table-header-border: $lm-table-header-border;
-$table-border-color: $lm-table-border-color;
-
 // Default: light mode (no preference or explicit light)
 :root {
     @include light-theme-vars;
@@ -193,8 +60,6 @@ $table-border-color: $lm-table-border-color;
 @media (prefers-color-scheme: dark) {
     :root:not([color-theme]) {
         @include dark-theme-vars;
-    }
-    :root:not([color-theme]) {
         @include dm-highlight;
     }
 }

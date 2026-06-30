@@ -44,17 +44,17 @@
         {%- endif -%}
         {%- if p.note %} — <em>{{ p.note }}</em>{% endif %}
         <br/>
-        {%- capture links -%}{%- endcapture -%}
+        {%- if p.paper or p.slide or p.bibtex -%}
         {%- if p.paper -%}
-        {%- capture links -%}{{ links }}<a class="material-symbols-outlined" href="{{ site.url }}/papers/{{ p.paper }}">docs</a>{%- endcapture -%}
+        <a class="material-symbols-outlined" href="{{ site.url }}/papers/{{ p.paper }}">docs</a>
         {%- endif -%}
         {%- if p.slide -%}
-        {%- capture links -%}{{ links }}{% if links != "" %}<span class="pub-links"></span>{% endif %}<a class="material-symbols-outlined" href="{{ site.url }}/slides/{{ p.slide }}">desktop_landscape</a>{%- endcapture -%}
+        {% if p.paper %}<span class="pub-links"></span>{% endif %}<a class="material-symbols-outlined" href="{{ site.url }}/slides/{{ p.slide }}">desktop_landscape</a>
         {%- endif -%}
         {%- if p.bibtex -%}
-        {%- capture links -%}{{ links }}{% if links != "" %}<span class="pub-links"></span>{% endif %}<a class="material-symbols-outlined" href="{{ site.url }}/bib/{{ p.bibtex }}">format_quote</a>{%- endcapture -%}
+        {% if p.paper or p.slide %}<span class="pub-links"></span>{% endif %}<a class="material-symbols-outlined" href="{{ site.url }}/bib/{{ p.bibtex }}">format_quote</a>
         {%- endif -%}
-        {% if links != "" %}{{ links }}{% endif %}
+        {%- endif -%}
         </li>
     {%- endfor -%}
     </ul>

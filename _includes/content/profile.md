@@ -1,4 +1,4 @@
-# Graduate Student @ [CompSec]({{ site.links.lab }})
+# Ph.D. Student @ [CompSec]({{ site.links.lab }})
 
 - Department of Electrical and Computer Engineering
 - Seoul National University (SNU)

@@ -9,6 +9,7 @@ RUN gem install bundler -v 2.4.22
 # dependencies for jekyll
 RUN gem install ffi -v 1.16.3
 RUN gem install public_suffix -v 4.0.7
+RUN gem install i18n -v 1.14.8
 
 RUN gem install jekyll -v 3.9.3
 RUN gem update bundler
