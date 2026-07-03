@@ -17,8 +17,8 @@ $lm-text-color: #2e3038 !default;                       // fg1
 $lm-background-color: #f1f3f5 !default;                 // bg0
 $lm-code-background-color: #e9ebef !default;            // bg_soft
 
-$lm-link-base-color: #2a5e08 !default;                  // red — the lone accent
-$lm-link-visited-color: #5a5c64 !default;               // fg2 — visited fades to neutral
+$lm-link-base-color: #366c8a !default;                  // red — the lone accent
+$lm-link-visited-color: #366c8a !default;               // fg2 — visited fades to neutral
 $lm-link-hover-color: $lm-text-color !default;
 
 $lm-border-color-01: #dfe1e6 !default;                  // bg1
@@ -88,8 +88,8 @@ $dm-text-color: #b8bac0 !default;                       // fg1
 $dm-background-color: #151515 !default;                 // bg0
 $dm-code-background-color: #1c1c1c !default;            // bg_soft
 
-$dm-link-base-color: #909a88 !default;                  // red — the lone accent
-$dm-link-visited-color: #909298 !default;               // fg2 — visited fades to neutral
+$dm-link-base-color: #7eb0cc !default;                  // red — the lone accent
+$dm-link-visited-color: #7eb0cc !default;               // fg2 — visited fades to neutral
 $dm-link-hover-color: $dm-text-color !default;
 
 $dm-border-color-01: #222222 !default;                  // bg1
