@@ -1,0 +1,15 @@
+<entry>
+  <title>$pagetitle$</title>
+  <link href="$site-url$$url$"/>
+  <id>$site-url$$url$</id>
+  <updated>$date$T00:00:00Z</updated>
+$for(author)$
+  <author><name>$author$</name></author>
+$endfor$
+$if(description)$
+  <summary type="html">$description$</summary>
+$endif$
+  <content type="html"><![CDATA[
+$body$
+]]></content>
+</entry>

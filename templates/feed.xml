@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="$site-url$/">
+  <title>$pagetitle$</title>
+  <link href="$site-url$/"/>
+  <link rel="self" href="$site-url$/feed.xml"/>
+  <id>$site-url$/</id>
+  <updated>$now$</updated>
+  <author><name>$pagetitle$</name></author>
+$body$
+</feed>

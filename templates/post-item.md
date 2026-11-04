@@ -1,0 +1,1 @@
+- [$date$]{.post-meta} [$title$]($url$){.post-link}
