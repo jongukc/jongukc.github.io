@@ -18,8 +18,7 @@ title: Home
 - [jdal3031@snu.ac.kr](mailto:jdal3031@snu.ac.kr)
 - [PGP Key](/files/jonguk.pgp)
 - [GitHub](https://github.com/jongukc)
-
-<!-- - [CV](/files/CV.pdf) -->
+- [CV](/files/cv-jonguk.pdf)
 :::
 ::::::
 

@@ -10,6 +10,7 @@ locally and on the CI runner) and make.
     make              # build into build/ (gitignored)
     ./serve.sh 4000   # build, serve on http://localhost:4000, rebuild on change
     make clean
+    make cv           # typeset cv/cv.tex into files/cv-jonguk.pdf (latexmk, local only)
 
 ## Layout
 
@@ -24,6 +25,9 @@ locally and on the CI runner) and make.
   header when `date` is set, footer). `post-item.md` renders one row of `/posts/`;
   `feed.xml` + `feed-entry.xml` render the Atom feed.
 - The Makefile generates `/posts/`, `/feed.xml` and `/sitemap.xml` from the posts.
+- `cv/` is the CV in LaTeX: `cv.tex` (header, `\input` order), `cv.sty`
+  (layout and the `\entry`/`\pub` macros), one file per section. The built
+  `files/cv-jonguk.pdf` is committed; CI has no TeX.
 
 ## Conventions
 

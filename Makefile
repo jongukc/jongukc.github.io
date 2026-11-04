@@ -27,7 +27,7 @@ PANDOC = pandoc --from markdown-implicit_figures --to html5 --mathjax --wrap=non
          --template $(TEMPLATE) \
          -V site-title="$(SITE_TITLE)" -V site-url=$(SITE_URL) -V updated=$(UPDATED)
 
-.PHONY: all clean
+.PHONY: all cv clean
 .DELETE_ON_ERROR:
 
 all: $(PAGE_OUT) $(POST_OUT) $(COPY_OUT) $(BUILD)/posts/index.html $(BUILD)/feed.xml $(BUILD)/sitemap.xml
@@ -73,6 +73,20 @@ $(BUILD)/sitemap.xml: $(POSTS)
 	  for u in / /posts/ $(patsubst posts/%.md,/posts/%/,$(POSTS)); do \
 	    echo "  <url><loc>$(SITE_URL)$$u</loc></url>"; \
 	  done; echo '</urlset>'; } > $@
+
+# ---- CV ----------------------------------------------------------------------
+# `make cv` typesets cv/cv.tex into files/cv-jonguk.pdf (needs TeX Live: pdflatex
+# and latexmk). LaTeX scratch files go to a temporary directory, so nothing else
+# is left behind (on an error, the message is printed first). The PDF is
+# committed: the site build and CI need no TeX.
+CV_PDF := files/cv-jonguk.pdf
+
+cv: $(CV_PDF)
+
+$(CV_PDF): $(wildcard cv/*)
+	tmp=$$(mktemp -d) && trap 'rm -r "$$tmp"' EXIT && \
+	  if latexmk -pdf -silent -cd -outdir="$$tmp" cv/cv.tex; then cp "$$tmp"/cv.pdf $@; \
+	  else grep -A2 '^!' "$$tmp"/cv.log; exit 1; fi
 
 clean:
 	rm -rf $(BUILD)

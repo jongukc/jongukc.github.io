@@ -8,6 +8,7 @@ and `make`. Nothing else is needed.
     make              # build the site into build/
     ./serve.sh 4000   # build, serve http://localhost:4000, rebuild on change
     make clean
+    make cv           # typeset cv/ into files/cv-jonguk.pdf (needs TeX Live)
 
 Pushing the `pandoc` branch deploys `build/` to GitHub Pages
 (`.github/workflows/pages.yml`).
@@ -18,6 +19,8 @@ Pushing the `pandoc` branch deploys `build/` to GitHub Pages
     posts/       Blog posts. posts/foo.md -> /posts/foo/
     files/       Copied as is to /files/: figures, fonts, favicon, js, PGP key,
                  papers, slides, ...
+    cv/          the CV in LaTeX: cv.tex (header, section order), cv.sty (look),
+                 one .tex file per section. `make cv` writes files/cv-jonguk.pdf.
     templates/   page.html      the HTML shell around every page
                  post-item.md   one row of the /posts/ list
                  feed.xml, feed-entry.xml   the Atom feed (/feed.xml)
@@ -56,6 +59,20 @@ with a backslash:
       [docs](/files/papers/x.pdf){.icon} [desktop_landscape](/files/slides/x.pdf){.icon} [format_quote](/files/bib/x.bib){.icon}
 
 The last line is optional; each link text is a Material Symbols icon name.
+
+## CV
+
+`make cv` runs latexmk on `cv/cv.tex` and copies the result to
+`files/cv-jonguk.pdf`, which is committed so the site build and the CI runner
+need no TeX. Edit the section files (`education.tex`, `publications.tex`, ...)
+and rebuild. Entries use two macros from `cv.sty`:
+
+    \entry{Title}{Dates}{Subtitle}{Details}   education, projects, talks
+    \pub{Title}{Authors}{Venue}                publications (\me is your name, bold)
+    \note{Text}                                flush-right remark, inside Subtitle
+
+A nested `itemize` after `\entry` adds bullet points under it. `\href` text is
+underlined automatically.
 
 ## Theme
 

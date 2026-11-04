@@ -1,0 +1,27 @@
+% Curriculum vitae. `make cv` (from the repository root) builds it into
+% files/cv-jonguk.pdf with latexmk. The look is in cv.sty, the content in one
+% file per section; reorder or drop sections by editing the \input lines.
+\documentclass[10pt]{article}
+\usepackage{cv}
+
+% How my own name appears in author lists.
+\newcommand{\me}{\textbf{Jonguk Cheong}}
+
+\begin{document}
+
+\cvheader{Jonguk Cheong}{Ph.D. Student}
+  {Department of Electrical and Computer Engineering\\
+   Seoul National University\\
+   Seoul, South Korea}
+  {Email: \href{mailto:jdal3031@snu.ac.kr}{jdal3031@snu.ac.kr} \,$|$\,
+   Web: \href{https://jongukc.github.io}{jongukc.github.io} \,$|$\,
+   Lab: \href{https://compsec.snu.ac.kr}{CompSec at SNU}}
+
+\input{about}
+\input{education}
+\input{publications}
+\input{talks}
+\input{projects}
+\input{skills}
+
+\end{document}
