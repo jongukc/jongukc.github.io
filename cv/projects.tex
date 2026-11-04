@@ -6,24 +6,19 @@
     \item Designed a sanitizer that detects memory-safety bugs in the KV cache
       of real-world LLM serving systems
     \item \textbf{Found 8 new KV cache memory-safety bugs in vLLM and SGLang}
-    \item Related systems: vLLM, SGLang
+  \end{itemize}
+
+  \entry{Emulating Intel TDX machines}{Aug. 2025 -- Present}{}{}
+  \begin{itemize}
+    \item Built a full-system emulation framework for Intel TDX with KVM
   \end{itemize}
 
   \entry{\href{https://github.com/jongukc/vtrp}{Protecting Linux kernel code mappings with Intel VT-rp}}
         {Aug.~2024 -- Dec.~2025}{}{}
   \begin{itemize}
     \item Added Intel VT-rp support to KVM and the guest Linux kernel, which
-      upstream Linux did not provide
+      upstream Linux does not provide
     \item Used it to protect kernel code mappings against an attacker with full
-      kernel privilege, efficiently blocking page table remapping and aliasing
-      attacks on kernel code pages 
-    \item Related systems: Linux kernel, KVM, QEMU
+      guest kernel privilege
   \end{itemize}
-
-  % Under review; uncomment once it can be listed.
-  % \entry{Emulating Intel TDX machines (OpenTDX)}{2025 -- 2026}{}{}
-  % \begin{itemize}
-  %   \item Built an open platform for exploring Intel TDX
-  %   \item Related systems: KVM, QEMU
-  % \end{itemize}
 \end{itemize}
