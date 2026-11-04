@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="f" viewBox="-16 -16 1132 422" role="img" aria-label="Diagram: on the left, each bug path gets its own fix and new paths still reach an uninitialized read. On the right, all paths, including unknown ones, are caught by one KVGuard check at the KV read.">
+<style>
+.f text { font-family: Cambria, "Source Serif 4", "Linux Libertine O", Georgia, serif; fill: #000; }
+.f .title { font-size: 18px; }
+.f .t  { font-size: 15px; }
+.f .ts { font-size: 13px; }
+.f .tl { font-size: 12px; }
+.f .m  { font-family: Inconsolata, "Ubuntu Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+.f .ms { font-family: Inconsolata, "Ubuntu Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; }
+.f .c  { text-anchor: middle; }
+.f .b  { font-weight: 700; }
+.f .ctr  { fill: #fff; stroke: #000; stroke-width: 2; }
+.f .pnl  { fill: #efefef; stroke: #000; stroke-width: 1.3; }
+.f .pill { fill: #efefef; stroke: #000; stroke-width: 1.3; }
+.f .inst { fill: #ffe5cc; stroke: #000; stroke-width: 1.3; }
+.f .cell { stroke: #000; stroke-width: 1.3; }
+.f .bt { fill: #ffeed9; }
+.f .kv { fill: #d9e7fd; }
+.f .sh { fill: #fcffd9; }
+.f .stale { fill: #ffd3d3; }
+.f .wh { fill: #fff; }
+.f .kvg  { fill: #e2f0e2; stroke: #000; stroke-width: 1.3; }
+.f .chk  { fill: #fcffd9; stroke: #000; stroke-width: 1.3; }
+.f .fix  { fill: #fff; stroke: #000; stroke-width: 1.3; }
+.f .viol { fill: #fff; stroke: #d42a2a; stroke-width: 1.6; }
+.f .rule { stroke: #000; stroke-width: 0.8; }
+.f .bar  { stroke: #000; stroke-width: 2.4; }
+.f .ar   { fill: none; stroke: #000; stroke-width: 1.3; }
+.f .arr  { fill: none; stroke: #e8363a; stroke-width: 1.6; }
+.f .hook { fill: none; stroke: #e69138; stroke-width: 2.4; stroke-dasharray: 8 4.5; }
+.f .hl   { fill: none; stroke: #e69138; stroke-width: 2.4; }
+.f .red  { fill: #d42a2a; }
+.f .gray { fill: #666; }
+.plate { fill: #fff; stroke: #d4d8d5; stroke-width: 1; }
+</style>
+<defs>
+<symbol id="bug" viewBox="0 0 91 91">
+      <g stroke="#1C274C" stroke-width="5.7" stroke-linecap="round">
+        <path d="M72 56.9V45.3C72 37 65.4 30.3 57.1 30.3H33.9C25.6 30.3 19 37 19 45.3V56.9C19 71.5 30.8 83.4 45.5 83.4S72 71.5 72 56.9Z" fill="#FF5050"/>
+        <path d="M62.6 32.2V28.4C62.6 19 54.9 11.4 45.5 11.4S28.4 19 28.4 28.4V32.2" fill="#FF5050"/>
+        <path d="M72 53.1H83.4M19 53.1H7.6M55 13.3 64.5 7.6M36 13.3 26.5 7.6M77.7 75.8 70.1 72.8M77.7 30.3 70.1 33.4M13.3 75.8 20.9 72.8M13.3 30.3 20.9 33.4M45.5 81.5V56.9" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="warn" viewBox="0 0 80 72">
+      <path d="M2 70 40 2 78 70Z" fill="#FF5050" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+      <text x="40" y="61" text-anchor="middle" font-family="Inconsolata, monospace" font-weight="700" font-size="40" fill="#000">!</text>
+    </symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#000"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#e8363a"/></marker>
+<marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#e69138"/></marker>
+</defs>
+<rect class="plate" x="-15.5" y="-15.5" width="1131" height="421" rx="10"/>
+<text x="10" y="18" class="title">Path-specific fixes</text>
+<rect x="8" y="28" width="540" height="320" rx="6" class="ctr"/>
+<rect x="20" y="46" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="26" y="54" width="28" height="28"/><text x="62" y="65" class="ts b">Cloudflare / SGLang (2026)</text><text x="62" y="82" class="tl">rejected prompt kept alive</text><rect x="20" y="104" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="26" y="112" width="28" height="28"/><text x="62" y="123" class="ts b">vLLM B6</text><text x="62" y="140" class="tl">offload restore skips a block</text><rect x="20" y="162" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="26" y="170" width="28" height="28"/><text x="62" y="181" class="ts b">SGLang B21</text><text x="62" y="198" class="tl">sent before its HiCache load</text><rect x="20" y="220" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="26" y="228" width="28" height="28"/><text x="62" y="239" class="ts b">SGLang N3 (new)</text><text x="62" y="256" class="tl">checkpoints an unwritten slot</text><rect x="20" y="278" width="236" height="44" rx="6" class="pnl" stroke-dasharray="6 4"/><use href="#bug" x="26" y="286" width="28" height="28"/><text x="62" y="297" class="ts b">The next bug</text><text x="62" y="314" class="tl">a path no one has seen yet</text>
+<path d="M256 68H298" class="arr" marker-end="url(#ahr)"/>
+<rect x="300" y="46" width="112" height="44" rx="5" class="fix"/>
+<text x="356" y="65" class="tl c">Cloudflare:</text>
+<text x="356" y="82" class="tl c">4 targeted fixes</text>
+<path d="M418 56V80" class="bar"/>
+<path d="M256 126H298" class="arr" marker-end="url(#ahr)"/>
+<rect x="300" y="104" width="112" height="44" rx="5" class="fix"/>
+<text x="356" y="123" class="tl c">PR #56709: load</text>
+<text x="356" y="140" class="tl c">retained tokens</text>
+<path d="M418 114V138" class="bar"/>
+<path d="M256 184H298" class="arr" marker-end="url(#ahr)"/>
+<rect x="300" y="162" width="112" height="44" rx="5" class="fix"/>
+<text x="356" y="181" class="tl c">PR #44081:</text>
+<text x="356" y="198" class="tl c">defer the send</text>
+<path d="M418 172V196" class="bar"/>
+<path d="M256 242H428" class="arr" marker-end="url(#ahr)"/>
+<path d="M256 300H428" class="arr" marker-end="url(#ahr)"/>
+<rect x="430" y="212" width="106" height="112" rx="6" class="viol"/>
+<use href="#warn" x="471" y="222" width="24" height="22"/>
+<text x="483" y="266" class="ts b red c">Uninit.</text>
+<text x="483" y="283" class="ts b red c">KV read</text>
+<text x="483" y="304" class="tl c">still possible</text>
+<text x="562" y="18" class="title">KVGuard: one invariant</text>
+<rect x="560" y="28" width="532" height="320" rx="6" class="ctr"/>
+<rect x="856" y="40" width="226" height="296" rx="8" class="kvg"/>
+<rect x="572" y="46" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="578" y="54" width="28" height="28"/><text x="614" y="65" class="ts b">Cloudflare / SGLang (2026)</text><text x="614" y="82" class="tl">rejected prompt kept alive</text><rect x="572" y="104" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="578" y="112" width="28" height="28"/><text x="614" y="123" class="ts b">vLLM B6</text><text x="614" y="140" class="tl">offload restore skips a block</text><rect x="572" y="162" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="578" y="170" width="28" height="28"/><text x="614" y="181" class="ts b">SGLang B21</text><text x="614" y="198" class="tl">sent before its HiCache load</text><rect x="572" y="220" width="236" height="44" rx="6" class="pnl"/><use href="#bug" x="578" y="228" width="28" height="28"/><text x="614" y="239" class="ts b">SGLang N3 (new)</text><text x="614" y="256" class="tl">checkpoints an unwritten slot</text><rect x="572" y="278" width="236" height="44" rx="6" class="pnl" stroke-dasharray="6 4"/><use href="#bug" x="578" y="286" width="28" height="28"/><text x="614" y="297" class="ts b">The next bug</text><text x="614" y="314" class="tl">a path no one has seen yet</text>
+<path d="M808 68H862" class="arr" marker-end="url(#ahr)"/>
+<use href="#warn" x="866" y="58" width="22" height="20"/>
+<path d="M808 126H862" class="arr" marker-end="url(#ahr)"/>
+<use href="#warn" x="866" y="116" width="22" height="20"/>
+<path d="M808 184H862" class="arr" marker-end="url(#ahr)"/>
+<use href="#warn" x="866" y="174" width="22" height="20"/>
+<path d="M808 242H862" class="arr" marker-end="url(#ahr)"/>
+<use href="#warn" x="866" y="232" width="22" height="20"/>
+<path d="M808 300H862" class="arr" marker-end="url(#ahr)"/>
+<use href="#warn" x="866" y="290" width="22" height="20"/>
+<rect x="896" y="56" width="174" height="86" class="chk"/><text x="983.0" y="76" class="ts b c">C5: Entry Access</text><path d="M908 84H1058" class="rule"/><text x="983.0" y="102" class="ts c">KV Access</text><text x="983.0" y="118" class="ts c">&#8597;</text><text x="983.0" y="134" class="ts c">Shadow Block</text>
+<text x="983" y="168" class="ts c">Read only entries</text>
+<text x="983" y="186" class="ts c">this request wrote,</text>
+<text x="983" y="204" class="ts c">checked at every</text>
+<text x="983" y="222" class="ts c">KV access</text>
+<text x="983" y="266" class="ts b red c">all 5 paths stopped</text>
+<text x="983" y="284" class="tl c">at the first bad read</text>
+<text x="969" y="322" class="t b c">GPU-Side Check</text>
+<use href="#bug" x="170.0" y="363" width="22" height="22"/><text x="198.0" y="376" class="ts">Bug: one path to an uninitialized read</text><rect x="464.0" y="365" width="14" height="14" class="cell wh"/><text x="484.0" y="376" class="ts">Fix for that path</text><rect x="617.0" y="365" width="14" height="14" class="cell kvg"/><text x="637.0" y="376" class="ts">KVGuard component</text><use href="#warn" x="770.0" y="364" width="22" height="20"/><text x="798.0" y="376" class="ts">Uninitialized KV read</text>
+</svg>

@@ -355,3 +355,12 @@
 .pub-links {
   margin-left: .3em;
 }
+
+.pub-title {
+  @include relative-font-size(1.25);
+}
+
+.talks li > strong {
+  @extend .pub-title;
+  display: block;
+}

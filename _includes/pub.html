@@ -1,5 +1,3 @@
-<!-- <h1>Publications</h1> -->
-
 {%- assign __papers = "" | split: "" -%}
 {%- for pair in site.data.papers -%}
   {%- assign p = pair[1] -%}
@@ -15,7 +13,11 @@
     {%- for p in items -%}
         {%- assign conf = site.data.conf[p.conf] -%}
         <li>
-        <strong>{{ p.title }}</strong>
+        {%- if p.url -%}
+        <strong class="pub-title"><a href="{{ p.url }}">{{ p.title }}</a></strong>
+        {%- else -%}
+        <strong class="pub-title">{{ p.title }}</strong>
+        {%- endif -%}
         <br/>
         {%- assign total = p.authors | size -%}
         {%- capture me -%}{{ site.author.name | default:'' | strip | downcase }}{%- endcapture -%}
@@ -38,7 +40,7 @@
         {%- endfor -%}
         <br/>
         {%- if conf -%}
-            <em>{{ conf.name }} (<strong>{{ conf.abbrev }}</strong>) {{ p.year }}</em>
+            <em>{{ conf.name }}{% if conf.abbrev %} (<strong>{{ conf.abbrev }}</strong>){% endif %} {{ p.year }}</em>
         {%- else -%}
             {{ p.year }}
         {%- endif -%}

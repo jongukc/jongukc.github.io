@@ -25,6 +25,15 @@ layout: base
 
   <!-- Publications -->
   <div class="post-content">
-{%include pub.html %}
+{% capture publications %}
+{% include content/publications.md %}
+{% endcapture %}{{ publications | markdownify }}
+  </div>
+
+  <!-- Talks -->
+  <div class="post-content talks">
+{% capture talks %}
+{% include content/talks.md %}
+{% endcapture %}{{ talks | markdownify }}
   </div>
 </div>

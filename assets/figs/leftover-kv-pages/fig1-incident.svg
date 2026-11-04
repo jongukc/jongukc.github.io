@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="f" viewBox="-16 -16 1132 544" role="img" aria-label="Diagram: prefill GPU rejects an oversized request but sends one KV page; decode GPU reserved eight pages and attention reads all of them, including seven stale pages from other users.">
+<style>
+.f text { font-family: "Source Serif 4", "Linux Libertine O", Cambria, Georgia, serif; fill: #000; }
+.f .t { font-size: 15px; }
+.f .ts { font-size: 13px; }
+.f .tl { font-size: 12px; }
+.f .m { font-family: "Inconsolata", "Ubuntu Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+.f .ms { font-family: "Inconsolata", "Ubuntu Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; }
+.f .c { text-anchor: middle; }
+.f .b { font-weight: 700; }
+.f .ctr { fill: none; stroke: #000; stroke-width: 2.4; }
+.f .pnl { fill: #EFEFEF; stroke: #000; stroke-width: 1.4; }
+.f .pill { fill: #EFEFEF; stroke: #000; stroke-width: 1.4; }
+.f .cell { stroke: #000; stroke-width: 1.1; }
+.f .bt { fill: #FFEED9; }
+.f .al { fill: #FCFFD9; }
+.f .kv { fill: #D9E7FD; }
+.f .stale { fill: #FFD3D3; }
+.f .wh { fill: #FFFFFF; }
+.f .gk { fill: #D9EAD3; stroke: #000; stroke-width: 1.4; }
+.f .inst { fill: #FFEED9; stroke: #000; stroke-width: 1.4; }
+.f .kvg { fill: #E4E9EB; stroke: #000; stroke-width: 1.4; stroke-dasharray: 7 5; }
+.f .chk { fill: #FCFFD9; stroke: #000; stroke-width: 1.4; }
+.f .ar { fill: none; stroke: #000; stroke-width: 1.6; }
+.f .arr { fill: none; stroke: #E8363A; stroke-width: 1.8; }
+.f .hook { fill: none; stroke: #EF8600; stroke-width: 1.8; stroke-dasharray: 6 4; }
+.f .hl { fill: none; stroke: #EF8600; stroke-width: 2.6; }
+.f .red { fill: #D42A2A; }
+.f .gray { fill: #666; }
+.f .dot { fill: #000; }
+.f .dott { fill: #fff; font-weight: 700; font-size: 13px; text-anchor: middle; }
+.plate { fill: #fff; stroke: #d4d8d5; stroke-width: 1; }
+</style>
+<defs>
+    <symbol id="bug" viewBox="0 0 91 91">
+      <g stroke="#1C274C" stroke-width="5.7" stroke-linecap="round">
+        <path d="M72 56.9V45.3C72 37 65.4 30.3 57.1 30.3H33.9C25.6 30.3 19 37 19 45.3V56.9C19 71.5 30.8 83.4 45.5 83.4S72 71.5 72 56.9Z" fill="#FF5050"/>
+        <path d="M62.6 32.2V28.4C62.6 19 54.9 11.4 45.5 11.4S28.4 19 28.4 28.4V32.2" fill="#FF5050"/>
+        <path d="M72 53.1H83.4M19 53.1H7.6M55 13.3 64.5 7.6M36 13.3 26.5 7.6M77.7 75.8 70.1 72.8M77.7 30.3 70.1 33.4M13.3 75.8 20.9 72.8M13.3 30.3 20.9 33.4M45.5 81.5V56.9" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="warn" viewBox="0 0 80 72">
+      <path d="M2 70 40 2 78 70Z" fill="#FF5050" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+      <text x="40" y="61" text-anchor="middle" font-family="Inconsolata, monospace" font-weight="700" font-size="40" fill="#000">!</text>
+    </symbol>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#000"/>
+    </marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#E8363A"/>
+    </marker>
+    <marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#EF8600"/>
+    </marker>
+  </defs>
+<rect class="plate" x="-15.5" y="-15.5" width="1131" height="543" rx="10"/>
+  <!-- ===== Prefill GPU ===== -->
+  <text x="10" y="17" class="t">Prefill GPU</text>
+  <rect x="8" y="26" width="552" height="196" rx="12" class="ctr"/>
+
+  <rect x="24" y="40" width="300" height="130" rx="10" class="pnl"/>
+  <text x="174" y="60" class="t c">Admission</text>
+  <text x="36" y="87" class="ts">Prompt</text>
+  <rect x="104" y="70" width="120" height="26" class="cell al"/>
+  <text x="164" y="88" class="ms c">900K tokens</text>
+  <text x="36" y="117" class="ts">KV pool</text>
+  <rect x="104" y="100" width="120" height="26" class="cell wh"/>
+  <text x="164" y="118" class="ms c">681K tokens</text>
+  <text x="234" y="117" class="ts red b">→ reject</text>
+  <rect x="36" y="134" width="236" height="26" rx="4" class="cell wh"/>
+  <text x="46" y="152" class="ms">if req.finished(): abort</text>
+  <use href="#bug" x="280" y="128" width="34" height="34"/>
+  <circle cx="314" cy="44" r="11" class="dot"/><text x="314" y="48.5" class="dott">2</text>
+
+  <rect x="24" y="180" width="300" height="34" rx="8" class="gk"/>
+  <text x="174" y="202" class="t c">Prefill (1 placeholder token)</text>
+  <path d="M324 197H342" class="arr" marker-end="url(#ahr)"/>
+
+  <rect x="344" y="40" width="200" height="174" rx="10" class="pnl"/>
+  <text x="444" y="60" class="t c">KV Cache Buffer</text>
+  <text x="430" y="82" class="tl c">PB0</text>
+  <text x="370" y="104" class="tl c">E0</text>
+  <text x="370" y="132" class="tl c">E1</text>
+  <rect x="390" y="88" width="80" height="26" class="cell kv"/>
+  <text x="430" y="106" class="ms c">tok₀</text>
+  <rect x="390" y="116" width="80" height="26" class="cell wh"/>
+  <text x="430" y="134" class="ms c">–</text>
+  <text x="440" y="176" class="tl gray">only 1 block</text>
+  <circle cx="534" cy="44" r="11" class="dot"/><text x="534" y="48.5" class="dott">3</text>
+
+  <!-- RDMA transfer -->
+  <circle cx="448" cy="236" r="11" class="dot"/><text x="448" y="240.5" class="dott">4</text>
+  <text x="466" y="241" class="ts">RDMA: sends 1 block, then signals “transfer complete”</text>
+
+  <!-- ===== Decode GPU ===== -->
+  <text x="10" y="263" class="t">Decode GPU</text>
+  <rect x="8" y="272" width="1084" height="232" rx="12" class="ctr"/>
+
+  <rect x="24" y="286" width="300" height="96" rx="10" class="pnl"/>
+  <text x="174" y="306" class="t c">Block Table</text>
+  <g class="tl">
+    <text x="76" y="328" class="c">LB0</text><text x="108" y="328" class="c">LB1</text><text x="140" y="328" class="c">LB2</text><text x="172" y="328" class="c">LB3</text>
+    <text x="204" y="328" class="c">LB4</text><text x="236" y="328" class="c">LB5</text><text x="268" y="328" class="c">LB6</text><text x="300" y="328" class="c">LB7</text>
+  </g>
+  <text x="30" y="352" class="ts">Req</text>
+  <g>
+    <rect x="60" y="334" width="32" height="26" class="cell bt"/><rect x="92" y="334" width="32" height="26" class="cell bt"/>
+    <rect x="124" y="334" width="32" height="26" class="cell bt"/><rect x="156" y="334" width="32" height="26" class="cell bt"/>
+    <rect x="188" y="334" width="32" height="26" class="cell bt"/><rect x="220" y="334" width="32" height="26" class="cell bt"/>
+    <rect x="252" y="334" width="32" height="26" class="cell bt"/><rect x="284" y="334" width="32" height="26" class="cell bt"/>
+  </g>
+  <g class="ms">
+    <text x="76" y="352" class="c">PB0</text><text x="108" y="352" class="c">PB1</text><text x="140" y="352" class="c">PB2</text><text x="172" y="352" class="c">PB3</text>
+    <text x="204" y="352" class="c">PB4</text><text x="236" y="352" class="c">PB5</text><text x="268" y="352" class="c">PB6</text><text x="300" y="352" class="c">PB7</text>
+  </g>
+  <text x="174" y="376" class="tl c gray">8 blocks reserved for the full prompt</text>
+  <circle cx="314" cy="290" r="11" class="dot"/><text x="314" y="294.5" class="dott">1</text>
+
+  <path d="M174 382V396" class="ar" marker-end="url(#ah)"/>
+  <rect x="24" y="398" width="300" height="34" rx="8" class="gk"/>
+  <text x="174" y="420" class="t c">Attention reads PB0–PB7</text>
+  <path d="M324 415H342" class="arr" marker-end="url(#ahr)"/>
+  <use href="#warn" x="294" y="404" width="24" height="22"/>
+
+  <rect x="344" y="286" width="732" height="146" rx="10" class="pnl"/>
+  <text x="710" y="306" class="t c">KV Cache Buffer</text>
+  <!-- RDMA transfer arrow, drawn after the panel so its head is not covered -->
+  <path d="M430 142V312" class="arr" marker-end="url(#ahr)"/>
+  <g class="tl">
+    <text x="430" y="328" class="c">PB0</text><text x="514" y="328" class="c">PB1</text><text x="598" y="328" class="c">PB2</text><text x="682" y="328" class="c">PB3</text>
+    <text x="766" y="328" class="c">PB4</text><text x="850" y="328" class="c">PB5</text><text x="934" y="328" class="c">PB6</text><text x="1018" y="328" class="c">PB7</text>
+    <text x="370" y="352" class="c">E0</text><text x="370" y="380" class="c">E1</text>
+  </g>
+  <!-- PB0: written by Req -->
+  <rect x="390" y="334" width="80" height="26" class="cell kv"/><rect x="390" y="362" width="80" height="26" class="cell wh"/>
+  <!-- PB1..PB7: stale -->
+  <g>
+    <rect x="474" y="334" width="80" height="26" class="cell stale"/><rect x="474" y="362" width="80" height="26" class="cell stale"/>
+    <rect x="558" y="334" width="80" height="26" class="cell stale"/><rect x="558" y="362" width="80" height="26" class="cell stale"/>
+    <rect x="642" y="334" width="80" height="26" class="cell stale"/><rect x="642" y="362" width="80" height="26" class="cell stale"/>
+    <rect x="726" y="334" width="80" height="26" class="cell stale"/><rect x="726" y="362" width="80" height="26" class="cell stale"/>
+    <rect x="810" y="334" width="80" height="26" class="cell stale"/><rect x="810" y="362" width="80" height="26" class="cell stale"/>
+    <rect x="894" y="334" width="80" height="26" class="cell stale"/><rect x="894" y="362" width="80" height="26" class="cell stale"/>
+    <rect x="978" y="334" width="80" height="26" class="cell stale"/><rect x="978" y="362" width="80" height="26" class="cell stale"/>
+  </g>
+  <g class="ms">
+    <text x="430" y="352" class="c">tok₀</text><text x="430" y="380" class="c">–</text>
+    <text x="514" y="352" class="c">my</text><text x="514" y="380" class="c">salary</text>
+    <text x="598" y="352" class="c">is</text><text x="598" y="380" class="c">$95k</text>
+    <text x="682" y="352" class="c">Dear</text><text x="682" y="380" class="c">Dr.</text>
+    <text x="766" y="352" class="c">Kim,</text><text x="766" y="380" class="c">your</text>
+    <text x="850" y="352" class="c">test</text><text x="850" y="380" class="c">results</text>
+    <text x="934" y="352" class="c">API</text><text x="934" y="380" class="c">key:</text>
+    <text x="1018" y="352" class="c">sk-9f</text><text x="1018" y="380" class="c">…</text>
+  </g>
+  <path d="M476 398V404H1056V398" fill="none" stroke="#D42A2A" stroke-width="1.6"/>
+  <text x="766" y="422" class="ts c red">PB1–PB7: never written by Req; still hold earlier users' KV</text>
+
+  <!-- output -->
+  <path d="M174 432V472H342" class="arr" marker-end="url(#ahr)"/>
+  <circle cx="194" cy="452" r="11" class="dot"/><text x="194" y="456.5" class="dott">5</text>
+  <rect x="344" y="446" width="732" height="46" rx="8" class="cell wh"/>
+  <text x="360" y="474" class="ts b">Response to Req:</text>
+  <text x="480" y="474" class="ms red">“… my salary is $95k … Dear Dr. Kim, your test results …”</text>
+
+</svg>

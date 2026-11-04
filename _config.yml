@@ -55,7 +55,7 @@ links:
 # in order as they should show up.
 header_pages:
   #- _headers/pubs.html
-  # - _headers/posts.html
+  - _headers/posts.html
 
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
@@ -102,4 +102,3 @@ exclude:
   - assets/profile.png
   - assets/minima-social-icons.liquid
   - assets/favicon/favicon.zip
-  - _headers/posts.html
