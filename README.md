@@ -6,7 +6,7 @@ and `make`. Nothing else is needed.
 ## Build and preview
 
     make              # build the site into build/
-    ./serve.sh 4000   # build, serve http://localhost:4000, rebuild on change
+    ./serve.sh 4000   # build, serve http://localhost:4000, rebuild site and CV on change
     make clean
     make cv           # typeset cv/ into files/cv-jonguk.pdf (needs TeX Live)
 

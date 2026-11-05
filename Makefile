@@ -76,8 +76,9 @@ $(BUILD)/sitemap.xml: $(POSTS)
 
 # ---- CV ----------------------------------------------------------------------
 # `make cv` typesets cv/cv.tex into files/cv-jonguk.pdf (needs TeX Live: pdflatex
-# and latexmk). Run it by hand after editing cv/: neither `make` nor CI rebuilds
-# the PDF, which is committed and copied like any other file under files/.
+# and latexmk). Run it after editing cv/ (serve.sh does so automatically):
+# neither `make` nor CI rebuilds the PDF, which is committed and copied like any
+# other file under files/.
 # LaTeX scratch files go to a temporary directory, so nothing else is left
 # behind (on an error, the message is printed first).
 CV_PDF := files/cv-jonguk.pdf

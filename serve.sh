@@ -1,6 +1,7 @@
 #!/bin/sh
 # Build the site and preview it at http://localhost:PORT. Sources are rebuilt
-# whenever they change (make runs once a second); reload the browser to see it.
+# whenever they change (make runs once a second), and the CV is typeset whenever
+# a file under cv/ is newer than the PDF; reload the browser to see it.
 # Unknown paths get build/404.html with status 404, as on GitHub Pages.
 #
 #   ./serve.sh [port]      default port: 4000
@@ -37,4 +38,9 @@ server=$!
 trap 'kill $server 2>/dev/null' EXIT
 trap 'exit' INT TERM
 echo "Serving http://localhost:$port (Ctrl-C to stop)"
-while sleep 1; do make -s || sleep 4; done
+cv_pdf=files/cv-jonguk.pdf
+cv_outdated() { [ ! -e "$cv_pdf" ] || [ -n "$(find cv -newer "$cv_pdf")" ]; }
+while sleep 1; do
+  if cv_outdated; then make -s cv || sleep 4; fi
+  make -s || sleep 4
+done

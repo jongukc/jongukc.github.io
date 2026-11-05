@@ -8,7 +8,7 @@ locally and on the CI runner) and make.
 ## Commands
 
     make              # build into build/ (gitignored)
-    ./serve.sh 4000   # build, serve on http://localhost:4000, rebuild on change
+    ./serve.sh 4000   # build, serve on http://localhost:4000, rebuild site and CV on change
     make clean
     make cv           # typeset cv/cv.tex into files/cv-jonguk.pdf (latexmk, local only)
 

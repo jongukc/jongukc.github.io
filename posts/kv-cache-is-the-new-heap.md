@@ -1,7 +1,7 @@
 ---
 title: "The KV Cache Is the New Heap: How Other Users' Prompts Leaked into Cloudflare's GLM Answers"
 description: "Cloudflare's GLM-5.3 KV cache exposure explained as an uninitialized KV read, and how KVGuard catches it."
-date: 2026-11-03
+date: 2026-11-05
 # author:
 #   - "Jonguk Cheong"
 published: true
@@ -197,7 +197,7 @@ for the request, so ownership looked valid; what was missing was the write.
 Catching that takes per-entry initialization, not only ownership, and we hope
 the production design covers both.
 
-## Caveats
+## Notes
 
 - The reproduction used a small model on a single GPU, not GLM-5.3 at
   Cloudflare's scale. It reproduces the serving bug and the transfer shape, not
