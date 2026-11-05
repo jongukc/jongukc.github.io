@@ -35,7 +35,7 @@ LLM serving systems and confidential computing.
 ::: {.pubs}
 ## 2026
 
-- **[KVGuard: A KV Cache Safety Checker for LLM Serving Systems](https://arxiv.org/abs/XXXX.XXXXX)**\
+- **[KVGuard: A KV Cache Safety Checker for LLM Serving Systems](https://arxiv.org/abs/2611.06138)**\
   **Jonguk Cheong**, Myungbin Hwang, Eulgyu Kim, and Byoungyoung Lee\
   *arXiv preprint 2026*
 

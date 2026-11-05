@@ -45,7 +45,7 @@ alive.
 ![Diagram: prefill GPU rejects an oversized request but sends one KV page;
 decode GPU reserved eight pages and attention reads all of them, including
 seven stale pages from other
-users.](/files/figs/leftover-kv-pages/fig1-incident.svg)
+users.](/files/figs/kv-cache-is-the-new-heap/fig1-incident.svg)
 
 **Figure 1.** The Cloudflare incident: a rejected over-length request still
 reaches decode, and attention reads seven reserved blocks it never wrote that
@@ -102,7 +102,7 @@ C5 in the paper).
 
 ![Diagram: KVGuard shadow blocks under each KV block. PB0 is initialized, PB1
 to PB7 are not. The C5 check on the attention read fires on
-PB1.](/files/figs/leftover-kv-pages/fig2-kvguard-check.svg)
+PB1.](/files/figs/kv-cache-is-the-new-heap/fig2-kvguard-check.svg)
 
 **Figure 2.** The same decode step under KVGuard: every block's permission
 passes, but only PB0 is marked written, so C5 fires on the first read of PB1.
@@ -131,6 +131,17 @@ signature. KVGuard reports **4,095 uninitialized reads on that one request**,
 each at the exact read where another user's data would enter the answer. A
 normal request transfers in full, and KVGuard stays silent.
 
+![Animation: a victim and an attacker share one SGLang service. The attacker's
+over-length request is answered with the victim's leftover data (name, recovery
+code, PIN, address), while the KVGuard panel reports 4,095 uninitialized KV
+reads on that request.](/files/figs/kv-cache-is-the-new-heap/kvguard-demo.gif)
+
+**Figure 3.** The reproduction: a victim and an attacker share one SGLang
+service. The attacker's over-length request comes back with the victim's
+leftover data, and KVGuard reports 4,095 uninitialized KV reads on that
+request. [Watch the MP4](/files/figs/kv-cache-is-the-new-heap/kvguard-demo.mp4) for a
+sharper version.
+
 ## One check instead of four fixes
 
 Cloudflare's fixes are right, and production systems need them. But each one
@@ -154,9 +165,9 @@ someone noticed wrong output.
 ![Diagram: on the left, each bug path gets its own fix and new paths still
 reach an uninitialized read. On the right, all paths, including unknown ones,
 are caught by one KVGuard check at the KV
-read.](/files/figs/leftover-kv-pages/fig3-point-fixes-vs-invariant.svg)
+read.](/files/figs/kv-cache-is-the-new-heap/fig3-point-fixes-vs-invariant.svg)
 
-**Figure 3.** A point fix closes one path at a time and misses the rest;
+**Figure 4.** A point fix closes one path at a time and misses the rest;
 KVGuard's one check at the KV read stops every path to an uninitialized read,
 including unknown ones.
 
@@ -212,10 +223,10 @@ the production design covers both.
   HTTP 200. Without a check like KVGuard, the oracle is a user who recognizes
   someone else's text.
 
-For more details, read our paper, [KVGuard: A KV Cache Safety Checker
-for LLM Serving Systems](https://arxiv.org/abs/XXXX.XXXXX). It covers the full
-design, the five checks, and the 29 historical and 8 new bugs we found in vLLM
-and SGLang.
+For more details, read our paper: [KVGuard: A KV Cache Safety Checker
+for LLM Serving Systems](https://arxiv.org/abs/2611.06138).
+
+Source code is available at GitHub: [compsec-snu/kvguard](https://github.com/compsec-snu/kvguard/).
 
 ---
 
@@ -223,4 +234,4 @@ Incident details are from Cloudflare's post “[KV cache exposure
 remediation](https://blog.cloudflare.com/kv-cache-exposure-remediation/)”.
 Figure 1 is our reconstruction from that description.
 
-<!-- KVGuard details are from [our paper](https://arxiv.org/abs/XXXX.XXXXX). -->
+<!-- KVGuard details are from [our paper](https://arxiv.org/abs/2611.06138). -->
