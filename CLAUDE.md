@@ -27,7 +27,7 @@ locally and on the CI runner) and make.
 - The Makefile generates `/posts/`, `/feed.xml` and `/sitemap.xml` from the posts.
 - `cv/` is the CV in LaTeX: `cv.tex` (header, `\input` order), `cv.sty`
   (layout and the `\entry`/`\pub` macros), one file per section. The built
-  `files/cv-jonguk.pdf` is committed; CI has no TeX.
+  `files/cv-jonguk.pdf` is committed and rebuilt only by `make cv`; CI has no TeX.
 
 ## Conventions
 

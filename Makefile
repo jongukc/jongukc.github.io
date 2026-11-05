@@ -76,16 +76,15 @@ $(BUILD)/sitemap.xml: $(POSTS)
 
 # ---- CV ----------------------------------------------------------------------
 # `make cv` typesets cv/cv.tex into files/cv-jonguk.pdf (needs TeX Live: pdflatex
-# and latexmk). LaTeX scratch files go to a temporary directory, so nothing else
-# is left behind (on an error, the message is printed first). The PDF is
-# committed: the site build and CI need no TeX.
+# and latexmk). Run it by hand after editing cv/: neither `make` nor CI rebuilds
+# the PDF, which is committed and copied like any other file under files/.
+# LaTeX scratch files go to a temporary directory, so nothing else is left
+# behind (on an error, the message is printed first).
 CV_PDF := files/cv-jonguk.pdf
 
-cv: $(CV_PDF)
-
-$(CV_PDF): $(wildcard cv/*)
+cv:
 	tmp=$$(mktemp -d) && trap 'rm -r "$$tmp"' EXIT && \
-	  if latexmk -pdf -silent -cd -outdir="$$tmp" cv/cv.tex; then cp "$$tmp"/cv.pdf $@; \
+	  if latexmk -pdf -silent -cd -outdir="$$tmp" cv/cv.tex; then cp "$$tmp"/cv.pdf $(CV_PDF); \
 	  else grep -A2 '^!' "$$tmp"/cv.log; exit 1; fi
 
 clean:
