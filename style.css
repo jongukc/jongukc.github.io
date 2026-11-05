@@ -279,7 +279,7 @@ table td { border: 1px solid var(--table-border-color); }
 .profile-text { font-size: 1.125rem; margin-right: auto; }
 .profile-text h1 { margin-top: 0; }
 @media screen and (max-width: 600px) {
-  .profile { flex-direction: column; gap: 1.5em; }
+  .profile { flex-direction: column; gap: 4.5em; }
 }
 
 /* Publications and talks: the bold first line of each item is the title */
