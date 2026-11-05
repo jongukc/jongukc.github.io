@@ -2,7 +2,7 @@
 
 Personal academic site: Markdown built into static HTML by pandoc and GNU make,
 deployed to GitHub Pages by `.github/workflows/pages.yml` on pushes to the
-`pandoc` branch. No Ruby, Jekyll or Docker. The only tools are pandoc (3.1.3
+`main` branch. No Ruby, Jekyll or Docker. The only tools are pandoc (3.1.3
 locally and on the CI runner) and make.
 
 ## Commands

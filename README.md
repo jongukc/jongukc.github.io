@@ -10,7 +10,7 @@ and `make`. Nothing else is needed.
     make clean
     make cv           # typeset cv/ into files/cv-jonguk.pdf (needs TeX Live)
 
-Pushing the `pandoc` branch deploys `build/` to GitHub Pages
+Pushing the `main` branch deploys `build/` to GitHub Pages
 (`.github/workflows/pages.yml`).
 
 ## Layout
