@@ -230,8 +230,6 @@ Source code is available at GitHub: [compsec-snu/kvguard](https://github.com/com
 
 ---
 
-Incident details are from Cloudflare's post “[KV cache exposure
-remediation](https://blog.cloudflare.com/kv-cache-exposure-remediation/)”.
+Incident details are from Cloudflare's post: [KV cache exposure
+remediation](https://blog.cloudflare.com/kv-cache-exposure-remediation/).
 Figure 1 is our reconstruction from that description.
-
-<!-- KVGuard details are from [our paper](https://arxiv.org/abs/2611.06138). -->
