@@ -177,7 +177,7 @@ AddressSanitizer trade-off applied to the KV cache. You can patch buffer
 overflows one at a time, or you can run a sanitizer in your tests and catch the
 whole class. KVGuard's five checks (C1–C5) cover all five bug classes. They
 detect all 29 historical bugs from the vLLM and SGLang patch histories and
-found 8 new ones, with no false positives.
+found 8 new ones (in vLLM, SGLang and TensorRT-LLM), with no false positives.
 
 ## Cloudflare reached the same conclusion
 
