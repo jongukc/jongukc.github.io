@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="f" viewBox="-16 -16 1132 502" role="img" aria-label="Diagram: KVGuard shadow blocks under each KV block. PB0 is initialized, PB1 to PB7 are not. The C5 check on the attention read fires on PB1.">
+<style>
+.f text { font-family: Cambria, "Source Serif 4", "Linux Libertine O", Georgia, serif; fill: #000; }
+.f .title { font-size: 18px; }
+.f .t  { font-size: 15px; }
+.f .ts { font-size: 13px; }
+.f .tl { font-size: 12px; }
+.f .m  { font-family: Inconsolata, "Ubuntu Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+.f .ms { font-family: Inconsolata, "Ubuntu Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; }
+.f .c  { text-anchor: middle; }
+.f .b  { font-weight: 700; }
+.f .ctr  { fill: #fff; stroke: #000; stroke-width: 2; }
+.f .pnl  { fill: #efefef; stroke: #000; stroke-width: 1.3; }
+.f .pill { fill: #efefef; stroke: #000; stroke-width: 1.3; }
+.f .inst { fill: #ffe5cc; stroke: #000; stroke-width: 1.3; }
+.f .cell { stroke: #000; stroke-width: 1.3; }
+.f .bt { fill: #ffeed9; }
+.f .kv { fill: #d9e7fd; }
+.f .sh { fill: #fcffd9; }
+.f .stale { fill: #ffd3d3; }
+.f .wh { fill: #fff; }
+.f .kvg  { fill: #e2f0e2; stroke: #000; stroke-width: 1.3; }
+.f .chk  { fill: #fcffd9; stroke: #000; stroke-width: 1.3; }
+.f .fix  { fill: #fff; stroke: #000; stroke-width: 1.3; }
+.f .viol { fill: #fff; stroke: #d42a2a; stroke-width: 1.6; }
+.f .rule { stroke: #000; stroke-width: 0.8; }
+.f .bar  { stroke: #000; stroke-width: 2.4; }
+.f .ar   { fill: none; stroke: #000; stroke-width: 1.3; }
+.f .arr  { fill: none; stroke: #e8363a; stroke-width: 1.6; }
+.f .hook { fill: none; stroke: #e69138; stroke-width: 2.4; stroke-dasharray: 8 4.5; }
+.f .hl   { fill: none; stroke: #e69138; stroke-width: 2.4; }
+.f .red  { fill: #d42a2a; }
+.f .gray { fill: #666; }
+.plate { fill: #fff; stroke: #d4d8d5; stroke-width: 1; }
+</style>
+<defs>
+<symbol id="bug" viewBox="0 0 91 91">
+      <g stroke="#1C274C" stroke-width="5.7" stroke-linecap="round">
+        <path d="M72 56.9V45.3C72 37 65.4 30.3 57.1 30.3H33.9C25.6 30.3 19 37 19 45.3V56.9C19 71.5 30.8 83.4 45.5 83.4S72 71.5 72 56.9Z" fill="#FF5050"/>
+        <path d="M62.6 32.2V28.4C62.6 19 54.9 11.4 45.5 11.4S28.4 19 28.4 28.4V32.2" fill="#FF5050"/>
+        <path d="M72 53.1H83.4M19 53.1H7.6M55 13.3 64.5 7.6M36 13.3 26.5 7.6M77.7 75.8 70.1 72.8M77.7 30.3 70.1 33.4M13.3 75.8 20.9 72.8M13.3 30.3 20.9 33.4M45.5 81.5V56.9" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="warn" viewBox="0 0 80 72">
+      <path d="M2 70 40 2 78 70Z" fill="#FF5050" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+      <text x="40" y="61" text-anchor="middle" font-family="Inconsolata, monospace" font-weight="700" font-size="40" fill="#000">!</text>
+    </symbol>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#000"/></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#e8363a"/></marker>
+<marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#e69138"/></marker>
+</defs>
+<rect class="plate" x="-15.5" y="-15.5" width="1131" height="501" rx="10"/>
+<text x="10" y="18" class="title">Decode GPU with KVGuard</text>
+<rect x="8" y="28" width="1084" height="402" rx="6" class="ctr"/>
+<rect x="24" y="42" width="290" height="28" rx="5" class="pill"/><text x="169.0" y="61.0" class="t c">GPU Block Table</text>
+<rect x="334" y="42" width="142" height="28" rx="5" class="inst"/><text x="405.0" y="61.0" class="t c">GPU Kernels</text>
+<rect x="496" y="42" width="580" height="28" rx="5" class="pill"/><text x="786.0" y="61.0" class="t c">KV Cache Buffer</text>
+<rect x="24" y="80" width="290" height="100" rx="8" class="pnl"/>
+<text x="70" y="102" class="tl c">LB0</text>
+<rect x="54" y="108" width="32" height="26" class="cell bt"/>
+<text x="70" y="126" class="ms c">PB0</text>
+<text x="102" y="102" class="tl c">LB1</text>
+<rect x="86" y="108" width="32" height="26" class="cell bt"/>
+<text x="102" y="126" class="ms c">PB1</text>
+<text x="134" y="102" class="tl c">LB2</text>
+<rect x="118" y="108" width="32" height="26" class="cell bt"/>
+<text x="134" y="126" class="ms c">PB2</text>
+<text x="166" y="102" class="tl c">LB3</text>
+<rect x="150" y="108" width="32" height="26" class="cell bt"/>
+<text x="166" y="126" class="ms c">PB3</text>
+<text x="198" y="102" class="tl c">LB4</text>
+<rect x="182" y="108" width="32" height="26" class="cell bt"/>
+<text x="198" y="126" class="ms c">PB4</text>
+<text x="230" y="102" class="tl c">LB5</text>
+<rect x="214" y="108" width="32" height="26" class="cell bt"/>
+<text x="230" y="126" class="ms c">PB5</text>
+<text x="262" y="102" class="tl c">LB6</text>
+<rect x="246" y="108" width="32" height="26" class="cell bt"/>
+<text x="262" y="126" class="ms c">PB6</text>
+<text x="294" y="102" class="tl c">LB7</text>
+<rect x="278" y="108" width="32" height="26" class="cell bt"/>
+<text x="294" y="126" class="ms c">PB7</text>
+<text x="30" y="126" class="ts">Req</text>
+<text x="169" y="162" class="tl gray c">8 blocks reserved for the full prompt</text>
+<rect x="334" y="104" width="142" height="34" rx="5" class="inst"/>
+<text x="405" y="126" class="t c">Attention</text>
+<rect x="496" y="80" width="580" height="100" rx="8" class="pnl"/>
+<text x="534" y="126" class="tl c">E0</text>
+<text x="534" y="154" class="tl c">E1</text>
+<text x="592" y="102" class="tl c">PB0</text>
+<rect x="560" y="108" width="64" height="26" class="cell kv"/>
+<text x="592" y="126" class="ms c">tok&#8320;</text>
+<rect x="560" y="136" width="64" height="26" class="cell wh"/>
+<text x="592" y="154" class="ms c">&#8211;</text>
+<text x="656" y="102" class="tl c">PB1</text>
+<rect x="624" y="108" width="64" height="26" class="cell stale"/>
+<text x="656" y="126" class="ms c">my</text>
+<rect x="624" y="136" width="64" height="26" class="cell stale"/>
+<text x="656" y="154" class="ms c">salary</text>
+<text x="720" y="102" class="tl c">PB2</text>
+<rect x="688" y="108" width="64" height="26" class="cell stale"/>
+<text x="720" y="126" class="ms c">is</text>
+<rect x="688" y="136" width="64" height="26" class="cell stale"/>
+<text x="720" y="154" class="ms c">$95k</text>
+<text x="784" y="102" class="tl c">PB3</text>
+<rect x="752" y="108" width="64" height="26" class="cell stale"/>
+<text x="784" y="126" class="ms c">Dear</text>
+<rect x="752" y="136" width="64" height="26" class="cell stale"/>
+<text x="784" y="154" class="ms c">Dr.</text>
+<text x="848" y="102" class="tl c">PB4</text>
+<rect x="816" y="108" width="64" height="26" class="cell stale"/>
+<text x="848" y="126" class="ms c">Kim,</text>
+<rect x="816" y="136" width="64" height="26" class="cell stale"/>
+<text x="848" y="154" class="ms c">your</text>
+<text x="912" y="102" class="tl c">PB5</text>
+<rect x="880" y="108" width="64" height="26" class="cell stale"/>
+<text x="912" y="126" class="ms c">test</text>
+<rect x="880" y="136" width="64" height="26" class="cell stale"/>
+<text x="912" y="154" class="ms c">results</text>
+<text x="976" y="102" class="tl c">PB6</text>
+<rect x="944" y="108" width="64" height="26" class="cell stale"/>
+<text x="976" y="126" class="ms c">API</text>
+<rect x="944" y="136" width="64" height="26" class="cell stale"/>
+<text x="976" y="154" class="ms c">key:</text>
+<text x="1040" y="102" class="tl c">PB7</text>
+<rect x="1008" y="108" width="64" height="26" class="cell stale"/>
+<text x="1040" y="126" class="ms c">sk-9f</text>
+<rect x="1008" y="136" width="64" height="26" class="cell stale"/>
+<text x="1040" y="154" class="ms c">&#8230;</text>
+<path d="M314 121H332" class="ar" marker-end="url(#ah)"/>
+<path d="M476 121H494" class="ar" marker-end="url(#ah)"/>
+<rect x="24" y="200" width="1052" height="160" rx="8" class="kvg"/>
+<rect x="44" y="222" width="260" height="86" class="chk"/><text x="174.0" y="242" class="ts b c">C5: Entry Access</text><path d="M56 250H292" class="rule"/><text x="174.0" y="268" class="ts c">KV Access</text><text x="174.0" y="284" class="ts c">&#8597;</text><text x="174.0" y="300" class="ts c">Shadow Block</text>
+<text x="540" y="246" class="ts b c">P</text>
+<text x="540" y="276" class="ts b c">I</text>
+<text x="592" y="222" class="tl c">PB0</text>
+<rect x="560" y="228" width="64" height="26" class="cell sh"/>
+<text x="592" y="246" class="ms c">Req: W</text>
+<rect x="560" y="258" width="64" height="26" class="cell sh"/>
+<text x="592" y="276" class="ms c">[T, F]</text>
+<text x="656" y="222" class="tl c">PB1</text>
+<rect x="624" y="228" width="64" height="26" class="cell sh"/>
+<text x="656" y="246" class="ms c">Req: W</text>
+<rect x="624" y="258" width="64" height="26" class="cell sh"/>
+<text x="656" y="276" class="ms red b c">[F, F]</text>
+<text x="720" y="222" class="tl c">PB2</text>
+<rect x="688" y="228" width="64" height="26" class="cell sh"/>
+<text x="720" y="246" class="ms c">Req: W</text>
+<rect x="688" y="258" width="64" height="26" class="cell sh"/>
+<text x="720" y="276" class="ms red b c">[F, F]</text>
+<text x="784" y="222" class="tl c">PB3</text>
+<rect x="752" y="228" width="64" height="26" class="cell sh"/>
+<text x="784" y="246" class="ms c">Req: W</text>
+<rect x="752" y="258" width="64" height="26" class="cell sh"/>
+<text x="784" y="276" class="ms red b c">[F, F]</text>
+<text x="848" y="222" class="tl c">PB4</text>
+<rect x="816" y="228" width="64" height="26" class="cell sh"/>
+<text x="848" y="246" class="ms c">Req: W</text>
+<rect x="816" y="258" width="64" height="26" class="cell sh"/>
+<text x="848" y="276" class="ms red b c">[F, F]</text>
+<text x="912" y="222" class="tl c">PB5</text>
+<rect x="880" y="228" width="64" height="26" class="cell sh"/>
+<text x="912" y="246" class="ms c">Req: W</text>
+<rect x="880" y="258" width="64" height="26" class="cell sh"/>
+<text x="912" y="276" class="ms red b c">[F, F]</text>
+<text x="976" y="222" class="tl c">PB6</text>
+<rect x="944" y="228" width="64" height="26" class="cell sh"/>
+<text x="976" y="246" class="ms c">Req: W</text>
+<rect x="944" y="258" width="64" height="26" class="cell sh"/>
+<text x="976" y="276" class="ms red b c">[F, F]</text>
+<text x="1040" y="222" class="tl c">PB7</text>
+<rect x="1008" y="228" width="64" height="26" class="cell sh"/>
+<text x="1040" y="246" class="ms c">Req: W</text>
+<rect x="1008" y="258" width="64" height="26" class="cell sh"/>
+<text x="1040" y="276" class="ms red b c">[F, F]</text>
+<rect x="621" y="225" width="70" height="62" class="hl"/>
+<text x="816" y="306" class="ts c">Shadow Blocks</text>
+<text x="550" y="346" class="t b c">KVGuard: GPU-Side Check</text>
+<path d="M405 138V190H174V220" class="hook" marker-end="url(#aho)"/>
+<path d="M304 265H340V314H656V284" class="hook" marker-end="url(#aho)"/>
+<path d="M174 308V376" class="arr" marker-end="url(#ahr)"/>
+<rect x="44" y="378" width="1032" height="40" rx="5" class="viol"/>
+<use href="#warn" x="56" y="387" width="24" height="22"/>
+<text x="92" y="403" class="ts"><tspan class="b red">C5 fires:</tspan> Req reads PB1&#183;E0, but its init bit is F. The entry was never written in this block&#8217;s lifetime &#8594; report Req, PB1, E0 and stop.</text>
+<rect x="115.5" y="447" width="14" height="14" class="cell inst"/><text x="135.5" y="458" class="ts">Instrumented component</text><rect x="300.5" y="447" width="14" height="14" class="cell kvg"/><text x="320.5" y="458" class="ts">KVGuard component</text><path d="M453.5 453H487.5" class="hook" marker-end="url(#aho)"/><text x="495.5" y="458" class="ts">Hook</text><rect x="546.5" y="447" width="14" height="14" class="cell stale"/><text x="566.5" y="458" class="ts">Stale KV (other users)</text><text x="731.5" y="458" class="ts"><tspan class="b">P</tspan>: Permission (R/W)</text><text x="877.5" y="458" class="ts"><tspan class="b">I</tspan>: Initialization</text>
+</svg>

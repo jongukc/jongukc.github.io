@@ -1,0 +1,450 @@
+/* ==========================================================================
+   Colors: dalbit-mono. Each value is light-dark(<light>, <dark>); the variant
+   follows the OS preference unless the header toggle sets color-theme.
+   ========================================================================== */
+:root {
+  color-scheme: light dark;
+
+  --brand-color:           light-dark(#80828a, #66686e);
+  --brand-color-light:     light-dark(#b5b6bb, #8c8e94);
+  --brand-color-dark:      light-dark(#424448, #353639);
+  --site-title-color:      light-dark(#1a1c22, #ced0d6);
+  --text-color:            light-dark(#2e3038, #b8bac0);
+  --background-color:      light-dark(#f1f3f5, #151515);
+  --code-background-color: light-dark(#e9ebef, #1c1c1c);
+  --link-base-color:       light-dark(#366c8a, #7eb0cc);
+  --link-visited-color:    light-dark(#366c8a, #7eb0cc);
+  --link-hover-color:      var(--text-color);
+  --border-color-01:       light-dark(#dfe1e6, #222222);
+  --border-color-02:       light-dark(#d0d2d8, #2c2c2c);
+  --border-color-03:       light-dark(#424448, #66686e);
+  --table-text-color:      light-dark(#575b6a, #b8bac0);
+  --table-zebra-color:     light-dark(#e9ebef, #1c1c1c);
+  --table-header-bg-color: light-dark(#dfe1e6, #222222);
+  --table-header-border:   light-dark(#d0d2d8, #2c2c2c);
+  --table-border-color:    var(--border-color-01);
+
+  /* syntax highlighting: lightness and weight, one accent for errors */
+  --hl-comment: light-dark(#5e606a, #9295a0);
+  --hl-accent:  light-dark(#a8401e, #c47868);
+  --hl-mid:     light-dark(#44464c, #a8aab0);
+  --hl-del-fg:  light-dark(#5a3024, #b4a8a0);
+  --hl-del-bg:  light-dark(#f4e6dc, #201818);
+  --hl-ins-fg:  light-dark(#3a4828, #aab4a4);
+  --hl-ins-bg:  light-dark(#e8efe0, #1a201a);
+}
+:root[color-theme="light"] { color-scheme: light; }
+:root[color-theme="dark"]  { color-scheme: dark; }
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+html {
+  font-size: 14px;
+  /* Always reserve the scrollbar's width so short pages (no scrollbar) and long
+     pages (scrollbar) line up and nothing shifts sideways between them. */
+  scrollbar-gutter: stable;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 400 14px/1.5 -apple-system, BlinkMacSystemFont, "Open Sans", "Roboto", "Segoe UI",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure { margin-bottom: 15px; }
+h1, h2, h3, h4, h5, h6 { font-weight: 400; }
+hr { margin-top: 30px; margin-bottom: 30px; }
+main { display: block; }
+img { max-width: 100%; vertical-align: middle; }
+figure > img { display: block; }
+figcaption { font-size: 12.25px; }
+ul, ol { margin-left: 30px; }
+li > ul, li > ol { margin-bottom: 0; }
+
+a { color: var(--link-base-color); text-decoration: none; }
+a:visited { color: var(--link-visited-color); }
+a:hover { color: var(--link-hover-color); text-decoration: underline; }
+
+blockquote {
+  color: var(--brand-color);
+  border-left: 4px solid var(--border-color-01);
+  padding-left: 15px;
+  font-size: 1.125rem;
+  font-style: italic;
+}
+blockquote > :last-child { margin-bottom: 0; }
+blockquote i, blockquote em { font-style: normal; }
+
+pre, code {
+  font-family: "Ubuntu Mono", "Roboto Mono", "Menlo", "Inconsolata", "Consolas",
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9375em;
+  border: 1px solid var(--border-color-01);
+  border-radius: 3px;
+  background-color: var(--code-background-color);
+}
+code { padding: 1px 5px; }
+pre { padding: 8px 12px; overflow-x: auto; }
+pre > code { border: 0; padding-right: 0; padding-left: 0; }
+
+.wrapper {
+  max-width: calc(800px - 30px);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.wrapper::after { content: ""; display: table; clear: both; }
+@media screen and (min-width: 800px) {
+  .wrapper { max-width: calc(800px + 300px); padding-right: 30px; padding-left: 30px; }
+}
+
+table {
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: left;
+  color: var(--table-text-color);
+  border-collapse: collapse;
+  border: 1px solid var(--table-border-color);
+}
+table tr:nth-child(even) { background-color: var(--table-zebra-color); }
+table th, table td { padding: 10px 15px; }
+table th { background-color: var(--table-header-bg-color); border: 1px solid var(--table-header-border); }
+table td { border: 1px solid var(--table-border-color); }
+@media screen and (max-width: 800px) {
+  table { display: block; overflow-x: auto; }
+}
+
+/* ==========================================================================
+   Header and navigation
+   ========================================================================== */
+.site-header {
+  border-top: 5px solid var(--border-color-03);
+  border-bottom: 2px solid var(--border-color-01);
+  min-height: 55.95px;
+  line-height: 47.25px;
+  position: relative;
+  padding-top: 0.5em;
+}
+
+.site-title-wrapper { margin-bottom: 0; column-gap: 0.1em; display: flex; float: left; }
+@media screen and (max-width: 600px) {
+  .site-title-wrapper { padding-right: 45px; }
+}
+
+.site-title, .site-title:visited {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--site-title-color);
+}
+.site-title:hover {
+  text-underline-offset: 8px;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--brand-color);
+}
+
+.site-nav {
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color-01);
+  border-radius: 5px;
+  text-align: right;
+}
+.site-nav .nav-trigger { display: none; }
+.site-nav .menu-icon {
+  float: right;
+  width: 36px;
+  height: 26px;
+  line-height: 0;
+  padding-top: 10px;
+  text-align: center;
+}
+.site-nav .menu-icon > svg path { fill: var(--border-color-03); }
+.site-nav label[for="nav-trigger"] {
+  display: block;
+  float: right;
+  width: 36px;
+  height: 36px;
+  z-index: 2;
+  cursor: pointer;
+}
+.site-nav input ~ .trigger { clear: both; display: none; }
+.site-nav input:checked ~ .trigger { display: block; padding-bottom: 5px; }
+.site-nav .page-link {
+  font-size: 1.125rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  display: block;
+  padding: 5px 10px;
+  margin-left: 20px;
+}
+.site-nav .page-link:not(:last-child) { margin-right: 0; }
+.site-nav .page-link:hover {
+  text-underline-offset: 4.5px;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--brand-color);
+}
+@media screen and (min-width: 600px) {
+  .site-nav { position: static; float: right; border: none; background-color: inherit; }
+  .site-nav label[for="nav-trigger"], .site-nav .menu-icon { display: none; }
+  .site-nav input ~ .trigger { display: block; }
+  .site-nav .page-link { display: inline; padding: 0; margin-left: auto; }
+  .site-nav .page-link:not(:last-child) { margin-right: 20px; }
+}
+
+/* Dark mode toggle (the label is a Material Symbols icon) */
+.toggle { display: none; border-width: 2px; }
+.toggle + .toggle_btn {
+  box-sizing: border-box;
+  outline: 0;
+  display: inline-block;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 1.6em;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px;
+  margin-right: 10px;
+  transition: all 0.16s ease;
+  font-size: 1em;
+  background: var(--brand-color);
+}
+.toggle + .toggle_btn::after {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--brand-color-dark);
+  background: var(--background-color);
+  content: "light_mode";
+}
+.toggle:checked + .toggle_btn::after { color: var(--brand-color-light); content: "dark_mode"; }
+
+.site-footer { border-top: 1px solid var(--border-color-01); padding: 30px 0; }
+
+/* ==========================================================================
+   Content
+   ========================================================================== */
+.page-content { padding: 30px 0; flex: 1 0 auto; }
+
+/* /posts/ list */
+.post-list ul { margin-left: 0; list-style: none; }
+.post-list li { margin-bottom: 30px; }
+.post-meta { font-size: 12.25px; color: var(--brand-color); }
+.post-link { display: block; font-size: 1.5rem; }
+
+.post-header { margin-bottom: 30px; }
+.post-content { margin-bottom: 30px; font-size: 1.125rem; }
+.post-content h1 { font-weight: bold; margin-top: 30px; font-size: 1.25rem; }
+.post-content h1:first-child { margin-top: 0; }
+.post-content h2 { font-weight: bold; font-size: 1rem; }
+.post-content h3 { font-size: 1.375rem; }
+.post-content h4 { font-size: 1.25rem; }
+.post-content h5 { font-size: 1.125rem; }
+.post-content h6 { font-size: 1.0625rem; }
+@media screen and (min-width: 800px) {
+  .post-content h1 { font-size: 1.5rem; }
+  .post-content h2 { font-size: 1.25rem; }
+  .post-content h3 { font-size: 1.625rem; }
+}
+
+/* Home: picture beside the profile text */
+.profile { display: flex; flex-direction: row; align-items: center; }
+.profile-image { flex: none; width: 15em; }
+.profile-image p { margin: 0; }
+.profile-image img { width: 100%; }
+.profile-text { font-size: 1.125rem; margin-left: 3em; margin-right: auto; }
+.profile-text h1 { margin-top: 0; }
+@media screen and (max-width: 600px) {
+  .profile { flex-direction: column; }
+  .profile-text { margin-left: 0; }
+}
+
+/* Publications and talks: the bold first line of each item is the title */
+.pubs li > strong:first-child, .pubs li > p > strong:first-child { font-size: 1.25rem; }
+
+/* 404 */
+.not-found { margin: 10px auto; max-width: 600px; text-align: center; }
+.not-found h1 { margin: 30px 0; font-size: 4em; line-height: 1; }
+
+/* ==========================================================================
+   Syntax highlighting (pandoc / skylighting classes)
+   ========================================================================== */
+code span.co, code span.do, code span.an, code span.cv, code span.in { color: var(--hl-comment); font-style: italic; }
+code span.pp { color: var(--hl-comment); font-weight: bold; }
+code span.wa { color: var(--hl-comment); font-weight: bold; font-style: italic; }
+code span.er, code span.al { color: var(--hl-accent); }
+code span.kw, code span.cf, code span.im, code span.fu { color: var(--site-title-color); font-weight: bold; }
+code span.op { font-weight: bold; }
+code span.dt { color: var(--text-color); font-weight: bold; }
+code span.dv, code span.fl, code span.bn, code span.at, code span.ex, code span.ot { color: var(--text-color); }
+code span.st, code span.vs, code span.ss, code span.ch, code span.sc,
+code span.va, code span.bu, code span.cn { color: var(--hl-mid); font-style: italic; }
+/* diff: removed lines are tagged as strings, added lines as variables */
+code.diff span.st { color: var(--hl-del-fg); background-color: var(--hl-del-bg); font-style: normal; }
+code.diff span.va { color: var(--hl-ins-fg); background-color: var(--hl-ins-bg); font-style: normal; }
+
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/files/fonts/material-symbols.woff2") format('woff2');
+}
+
+.material-symbols-outlined, .icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 25px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-cyrillic-ext.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-cyrillic.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-greek-ext.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-greek.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-hebrew.woff2") format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-math.woff2") format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-symbols.woff2") format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("/files/fonts/open-sans-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/files/fonts/ubuntu-mono-cyrillic-ext.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/files/fonts/ubuntu-mono-cyrillic.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/files/fonts/ubuntu-mono-greek-ext.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/files/fonts/ubuntu-mono-greek.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/files/fonts/ubuntu-mono-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/files/fonts/ubuntu-mono-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

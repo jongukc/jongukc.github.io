@@ -1,0 +1,60 @@
+% Look of the CV: page, fonts, section titles and the macros the section files
+% use. Nothing personal lives here; see cv.tex for that.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cv}[2026/11/04 CV style]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}                      % Computer Modern, scalable
+\RequirePackage[letterpaper,margin=0.6in,top=0.5in]{geometry}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[normalem]{ulem}           % \uline: underline that can wrap
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+
+% Links are underlined. hyperref can only color or box them, so wrap the text.
+\AtBeginDocument{%
+  \let\cv@href\href
+  \renewcommand{\href}[2]{\cv@href{#1}{\uline{#2}}}}
+
+% Section title: small caps with a rule under it.
+\titleformat{\section}{\large\scshape}{}{0pt}{}[\vspace{-3pt}\titlerule]
+\titlespacing*{\section}{0pt}{1.4em}{0.7em}
+
+% Lists: bullets, a little air between items, none between the lines of one item.
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.5em,parsep=0pt,topsep=0pt}
+\setlist[itemize,2]{leftmargin=1.4em,itemsep=0.1em,topsep=0.2em,
+                    label=\textbullet,font=\small,before=\small}
+
+% \cvheader{Name}{Role}{Affiliation lines}{Contact line}
+\newcommand{\cvheader}[4]{%
+  \begin{center}
+    {\Huge\bfseries #1}\quad{\large\bfseries/ #2}\\[0.6em]
+    #3\\[0.6em]
+    #4
+  \end{center}
+  \vspace{0.5em}}
+
+% \entry{Title}{Dates}{Subtitle}{Details}
+%   Bold title with the dates flush right, italic subtitle below, then the
+%   details. Subtitle and details may be empty. Used for education, projects
+%   and talks; a nested itemize may follow it inside the same item.
+\newcommand{\entry}[4]{%
+  \item\textbf{#1}\hfill#2\par
+  \if\relax\detokenize{#3}\relax\else\textit{#3}\par\fi
+  #4\par}
+
+% \note{Text}: flush-right remark on the current line, meant for the Subtitle of
+% \entry, e.g. {Seoul, South Korea\note{military service (2 years)}}.
+\newcommand{\note}[1]{\hfill\textup{#1}}
+
+% \pub{Title}{Authors}{Venue}
+%   Bold title, authors on the next line, venue in small italics.
+\newcommand{\pub}[3]{%
+  \item\textbf{#1}\par
+  #2\par
+  {\small\itshape#3}\par}

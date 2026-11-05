@@ -1,48 +1,43 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Project Overview
-
-This is a personal academic portfolio/blog built with Jekyll, deployed to GitHub Pages. The site showcases research publications and blog posts.
+Personal academic site: Markdown built into static HTML by pandoc and GNU make,
+deployed to GitHub Pages by `.github/workflows/pages.yml` on pushes to the
+`pandoc` branch. No Ruby, Jekyll or Docker. The only tools are pandoc (3.1.3
+locally and on the CI runner) and make.
 
 ## Commands
 
-```bash
-# Install dependencies
-./script/bootstrap
+    make              # build into build/ (gitignored)
+    ./serve.sh 4000   # build, serve on http://localhost:4000, rebuild on change
+    make clean
+    make cv           # typeset cv/cv.tex into files/cv-jonguk.pdf (latexmk, local only)
 
-# Run local dev server (http://localhost:4000)
-./script/server
+## Layout
 
-# Build static site to _site/
-./script/build
+- `pages/*.md` -> `/<name>.html` (`index.md` -> `/`). `404.md` is the 404 page.
+- `posts/<slug>.md` -> `/posts/<slug>/`. Front matter: `title`, `description`,
+  `date` (ISO, used for sorting and display), optional `author` list,
+  `published: false` to skip a draft.
+- `files/` is copied verbatim to `/files/` (figures, fonts, favicon, js, PGP key).
+- `style.css` -> `/style.css`. `robots.txt` and the Google verification file are
+  copied to the root (`ROOT` in the Makefile).
+- `templates/page.html` is the single pandoc template (header, nav, post
+  header when `date` is set, footer). `post-item.md` renders one row of `/posts/`;
+  `feed.xml` + `feed-entry.xml` render the Atom feed.
+- The Makefile generates `/posts/`, `/feed.xml` and `/sitemap.xml` from the posts.
+- `cv/` is the CV in LaTeX: `cv.tex` (header, `\input` order), `cv.sty`
+  (layout and the `\entry`/`\pub` macros), one file per section. The built
+  `files/cv-jonguk.pdf` is committed; CI has no TeX.
 
-# Alternative: Docker development
-docker-compose up
-```
+## Conventions
 
-Note: Changes to `_config.yml` require restarting the server.
-
-## Architecture
-
-**Tech Stack**: Jekyll 3.9.3, Minima theme (remote, custom skin), SASS, Liquid templates
-
-**Layout hierarchy**: `base.html` → `home.html` / `post.html` / `page.html`
-
-**Homepage rendering** (`index.md` → `home` layout):
-1. Profile image + `_includes/content/profile.md`
-2. Bio section from `_includes/content/bio.md`
-3. Publications from `_data/papers.yaml`, with conference metadata resolved via `_data/conf.yaml`, rendered by `_includes/pub.html`
-
-**Publications data model** (`_data/papers.yaml`):
-- Each entry has: `title`, `authors`, `conf` (key into `conf.yaml`), `year`, optional `paper`/`slide`/`bibtex` filenames, optional `note`
-- Author matching: the site author name (`site.author.name`) is auto-bolded in author lists
-- Paper/slide/bib files live in `/papers/`, `/slides/`, `/bib/` respectively
-
-**Styles**: Custom Minima skin (`minima.skin: custom` in `_config.yml`). SASS entry point is `_sass/main.scss`, which imports `_variables`, `_base`, `_layout`, and components (`toggle`, `cursor`, `fonts`). Dark mode toggle in `assets/js/darkMode.js` with localStorage persistence.
-
-## Git Workflow
-
-- `jekyll` branch: Main source, auto-deploys via GitHub Actions on push
-- Feature branches merge into `jekyll`
+- Home page sections (profile, bio, publications, talks) are all in
+  `pages/index.md`. Publications and talks are lists inside `::: {.pubs}`
+  fenced divs; the first bold line of an item is its title. Icon links use
+  `[icon_name](url){.icon}` (Material Symbols).
+- The stylesheet is plain CSS. Colors are the dalbit-mono scheme as
+  `light-dark()` custom properties at the top of `style.css`; dark mode is
+  toggled by setting `color-theme` on `<html>` (`files/js/darkMode.js`).
+- Pandoc runs with `implicit_figures` disabled so image alt text is not shown as
+  a caption. Syntax highlighting uses pandoc's skylighting classes (`.kw`,
+  `.st`, ...), styled in `style.css`.
